@@ -116,3 +116,36 @@
 Sandbox 的核心不在“是否使用 Docker”，而在“隔离策略是否被持续执行并可审计”。本章给出了从部署到演练的落地路径。
 
 下一章将回到 Agent Loop，以案例工坊方式拆解复杂任务如何在多轮中稳定收敛。
+
+### 源码片段与图示
+
+#### 图示：Agent Loop + Sandbox 执行路径
+
+![Agent Loop](../assets/agent-loop.svg)
+
+#### 源码片段：runtime 可用性探测（节选，`crates/microclaw-tools/src/sandbox.rs`）
+
+```rust
+fn docker_available() -> bool {
+    std::process::Command::new("docker")
+        .args(["info", "--format", "{{.ServerVersion}}"])
+        .stdout(std::process::Stdio::null())
+        .stderr(std::process::Stdio::null())
+        .status()
+        .is_ok_and(|s| s.success())
+}
+```
+
+#### 源码片段：Fail-open/Fall-back 警告（节选）
+
+```rust
+if !self.backend.is_real() {
+    if self.config.require_runtime {
+        bail!("sandbox is enabled but no docker runtime is available");
+    }
+    if !self.warned_missing_runtime.swap(true, Ordering::Relaxed) {
+        tracing::warn!("sandbox enabled but docker unavailable, falling back to host");
+    }
+    return exec_host_command(command, opts).await;
+}
+```

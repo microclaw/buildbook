@@ -238,3 +238,32 @@
 案例工坊的核心不是“记住 30 个答案”，而是形成统一执行肌肉记忆：先计划、再执行、可见失败、可持续推进。
 
 下一章将进入配置百科，把参数设计和故障模式逐项打通。
+
+### 源码片段与图示
+
+#### 图示：计划与执行
+
+![Plan Execute](../assets/plan-execute.svg)
+
+#### 源码片段：todo 计划要求（系统提示词节选，`src/agent_engine.rs`）
+
+```rust
+// Built-in execution playbook:
+// - If you will call any tool or activate any skill in this turn,
+//   you must start by calling todo_write to create a concise task list.
+// - Keep exactly one task in_progress at a time.
+// - After each major step, update todo_write.
+```
+
+#### 源码片段：工具失败汇总提示（节选）
+
+```rust
+let final_text = if failed_tools.is_empty() {
+    final_text
+} else {
+    let tools = failed_tools.iter().cloned().collect::<Vec<_>>().join(", ");
+    format!(
+        "{final_text}\n\nExecution note: some tool actions failed in this request ({tools})."
+    )
+};
+```
