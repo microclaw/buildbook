@@ -65,3 +65,36 @@ Agent Loop 的稳定性取决于它如何处理“非理想输出”。MicroClaw
 本章展示了 Agent Loop 的完整主干：准备上下文、调用模型、执行工具、回灌结果、持久化状态。它并不是“模型外包器”，而是一个带策略、带容错、带可恢复性的执行状态机。
 
 下一章将继续深潜 Agent Loop 的内部结构，重点讨论 stop_reason 状态转移、流式事件、恢复语义以及循环边界的工程设计。
+
+### 源码片段与图示
+
+#### 图示：Agent Loop 序列
+
+![Agent Loop 序列图](../assets/04-agentic-loop-sequence.svg)
+
+#### 源码片段：主循环与 stop_reason 分支（节选，`src/agent_engine.rs`）
+
+```rust
+for iteration in 0..state.config.max_tool_iterations {
+    let response = state
+        .llm
+        .send_message(&system_prompt, messages.clone(), Some(tool_defs.clone()))
+        .await?;
+
+    let stop_reason = response.stop_reason.as_deref().unwrap_or("end_turn");
+
+    if stop_reason == "end_turn" || stop_reason == "max_tokens" {
+        // 聚合文本、保存 session、返回 final response
+        return Ok(final_text);
+    }
+
+    if stop_reason == "tool_use" {
+        // 执行 tool_use，回灌 tool_result，再进入下一轮
+        messages.push(Message {
+            role: "user".into(),
+            content: MessageContent::Blocks(tool_results),
+        });
+        continue;
+    }
+}
+```

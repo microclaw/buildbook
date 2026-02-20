@@ -65,3 +65,41 @@ Sandbox 的高风险点之一是“挂载路径”。如果挂载了敏感目录
 Sandbox 章节的核心结论是：隔离不只是“开关”，而是一组策略组合。MicroClaw 通过路由器、容器约束、路径校验和 runtime 失败策略，把“可选隔离”逐步升级为“可治理隔离”。
 
 下一章将进入记忆系统，讨论长期状态如何被提取、筛选、注入并保持质量稳定。
+
+### 源码片段与图示
+
+#### 图示：系统总体架构（含执行路径）
+
+![System Architecture](../assets/01-system-architecture.svg)
+
+#### 源码片段：sandbox 路由决策（节选，`crates/microclaw-tools/src/sandbox.rs`）
+
+```rust
+if self.config.mode == SandboxMode::Off {
+    return exec_host_command(command, opts).await;
+}
+if !self.backend.is_real() {
+    if self.config.require_runtime {
+        bail!("sandbox is enabled but no docker runtime is available");
+    }
+    tracing::warn!("sandbox enabled but docker unavailable, falling back to host");
+    return exec_host_command(command, opts).await;
+}
+self.backend.ensure_ready(session_key).await?;
+self.backend.exec(session_key, command, opts).await
+```
+
+#### 源码片段：挂载路径防护（节选）
+
+```rust
+const MOUNT_BLOCKED_COMPONENTS: &[&str] = &[
+    ".ssh", ".gnupg", ".aws", ".azure", ".gcloud", ".kube", ".docker",
+];
+
+if contains_symlink_component(path)? {
+    bail!("mount path contains symlink component");
+}
+if has_sensitive_mount_component(path) {
+    bail!("mount path contains sensitive component");
+}
+```
