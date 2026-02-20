@@ -44,6 +44,9 @@ cd /Users/eevv/focus/buildbook/book
   done
 } > _export.md
 
+# Fix image paths for merged export file
+sed -i '' 's#../assets/#assets/#g' _export.md
+
 pandoc _export.md -o 从零构建MicroClaw-typst.pdf \
   --pdf-engine=typst \
   --toc \
