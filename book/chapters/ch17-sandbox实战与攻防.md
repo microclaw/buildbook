@@ -151,3 +151,9 @@ if !self.backend.is_real() {
     return exec_host_command(command, opts).await;
 }
 ```
+
+### 实践误区速览
+
+1. 读码只看函数，不画执行链和模块边界图。
+2. 安全演练只做“通过性测试”，不做故障注入。
+3. 复盘只记录结论，不沉淀可执行检查项。

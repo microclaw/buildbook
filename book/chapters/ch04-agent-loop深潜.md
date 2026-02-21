@@ -118,3 +118,9 @@ if let Ok(json) = serde_json::to_string(&messages) {
     let _ = call_blocking(state.db.clone(), move |db| db.save_session(chat_id, &json)).await;
 }
 ```
+
+### 实践误区速览
+
+1. 把 Agent Loop 当作“多次模型调用”，忽略状态机语义。
+2. 只看成功路径，不验证 stop_reason 的异常分支。
+3. 忽视会话落盘细节，导致恢复语义在生产中失效。

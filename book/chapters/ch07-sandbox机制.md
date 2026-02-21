@@ -105,3 +105,9 @@ if has_sensitive_mount_component(path) {
     bail!("mount path contains sensitive component");
 }
 ```
+
+### 实践误区速览
+
+1. 先写工具实现，再补风险策略和权限检查。
+2. 把审批机制当作唯一安全手段，忽略隔离执行。
+3. 在没有观测数据的情况下调整安全策略阈值。

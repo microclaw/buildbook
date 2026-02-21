@@ -100,3 +100,9 @@ for iteration in 0..state.config.max_tool_iterations {
     }
 }
 ```
+
+### 实践误区速览
+
+1. 把 Agent Loop 当作“多次模型调用”，忽略状态机语义。
+2. 只看成功路径，不验证 stop_reason 的异常分支。
+3. 忽视会话落盘细节，导致恢复语义在生产中失效。
