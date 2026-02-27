@@ -1,0 +1,10 @@
+title: "从零构建 MicroClaw"
+subtitle: "多渠道 Agent Runtime 的架构与实践"
+author:
+  - "MicroClaw Book Project"
+date: "2026-02-27"
+rights: "Draft for internal use"
+toc: true
+toc-depth: 3
+number-sections: true
+highlight-style: tango
