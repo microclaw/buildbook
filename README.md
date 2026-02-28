@@ -9,6 +9,7 @@
 ```bash
 cd /Users/eevv/focus/buildbook
 make check
+make audit
 make pdf
 ```
 
@@ -19,46 +20,49 @@ make pdf
 ### 根目录
 
 - `README.md`：仓库总说明与文件治理规则
-- `Makefile`：一键构建命令入口（`check`/`pdf`/`clean`）
+- `AGENTS.md`：仓库协作约束与执行规则
+- `surface.png`：书籍封面图（PDF 首页）
+- `Makefile`：一键命令入口（`check`/`audit`/`pdf`/`clean`）
 - `.gitignore`：忽略编辑器与构建产物
 - `scripts/build-book.sh`：主构建脚本（固定编译顺序）
+- `scripts/audit-files.sh`：文件治理审计脚本（检测“无用途文件”）
 
-### 书稿控制文件（book/）
+### 书稿控制文件（根目录）
 
-- `book/00-项目总览.md`：范围定义（做什么/不做什么）
-- `book/01-全书目录.md`：唯一权威目录
-- `book/02-写作规范.md`：术语、证据、章节写法规范
-- `book/03-写作路线图.md`：阶段推进计划
-- `book/04-进度看板.md`：章节状态管理
-- `book/05-出版构建.md`：构建与排版操作手册
-- `book/06-封面设计-prompt.md`：封面生成提示词
+- `00-项目总览.md`：范围定义（做什么/不做什么）
+- `01-全书目录.md`：唯一权威目录
+- `02-写作规范.md`：术语、证据、章节写法规范
+- `03-写作路线图.md`：阶段推进计划
+- `04-进度看板.md`：章节状态管理
+- `05-出版构建.md`：构建与排版操作手册
+- `06-封面设计-prompt.md`：封面生成提示词
 
 ### 排版与构建配置
 
-- `book/build/metadata.yaml`：书籍元数据
-- `book/theme/book-theme.typ`：Typst 版式主题
+- `build/metadata.yaml`：书籍元数据
+- `theme/book-theme.typ`：Typst 版式主题
 
 ### 正文章节
 
-- `book/chapters/part-1-foundation/*.md`：基础篇（Chapter 1-4）
-- `book/chapters/part-2-kernel/*.md`：内核篇（Chapter 5-12）
-- `book/chapters/part-3-production/*.md`：生产篇（Chapter 13-18）
+- `chapters/part-1-foundation/*.md`：基础篇（Chapter 1-4）
+- `chapters/part-2-kernel/*.md`：内核篇（Chapter 5-12）
+- `chapters/part-3-production/*.md`：生产篇（Chapter 13-18）
 
 ### 附录
 
-- `book/appendices/appendix-a-能力矩阵.md`
-- `book/appendices/appendix-b-源码导读索引.md`
-- `book/appendices/appendix-c-实施模板.md`
+- `appendices/appendix-a-能力矩阵.md`
+- `appendices/appendix-b-源码导读索引.md`
+- `appendices/appendix-c-实施模板.md`
 
 ### 研究资料（仅用于写作参考）
 
-- `book/research/compare/01-microclaw-vs-openclaw.md`
-- `book/research/compare/02-microclaw-vs-nanoclaw.md`
-- `book/research/compare/03-microclaw-vs-moltis.md`
-- `book/research/compare/04-microclaw-vs-zeroclaw.md`
-- `book/research/compare/05-microclaw-vs-nanobot.md`
-- `book/research/compare/06-microclaw-vs-nullclaw.md`
-- `book/research/compare/README.md`
+- `research/compare/01-microclaw-vs-openclaw.md`
+- `research/compare/02-microclaw-vs-nanoclaw.md`
+- `research/compare/03-microclaw-vs-moltis.md`
+- `research/compare/04-microclaw-vs-zeroclaw.md`
+- `research/compare/05-microclaw-vs-nanobot.md`
+- `research/compare/06-microclaw-vs-nullclaw.md`
+- `research/compare/README.md`
 
 ## 文件治理规则
 
@@ -71,7 +75,7 @@ make pdf
 
 ## 写作原则
 
-1. 目录先行：章节结构以 `book/01-全书目录.md` 为准。
+1. 目录先行：章节结构以 `01-全书目录.md` 为准。
 2. 证据先行：关键结论必须可追溯。
 3. 工程先行：先讲架构决策，再讲实现细节。
 4. 可落地先行：每章必须给出实践清单。
