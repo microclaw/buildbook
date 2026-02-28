@@ -21,6 +21,7 @@ make pdf
 
 - `README.md`：仓库总说明与文件治理规则
 - `AGENTS.md`：仓库协作约束与执行规则
+- `todo.md`：从写作到发布的执行清单
 - `surface.png`：书籍封面图（PDF 首页）
 - `Makefile`：一键命令入口（`check`/`audit`/`pdf`/`clean`）
 - `.gitignore`：忽略编辑器与构建产物
