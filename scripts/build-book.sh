@@ -57,6 +57,15 @@ pandoc \
   "${INPUTS[@]}" \
   -o "$BOOK_TYP"
 
+python3 - <<'PY'
+from pathlib import Path
+
+book_typ = Path("dist/book.typ")
+text = book_typ.read_text()
+text = text.replace("#outline(\n  title: auto,", "#outline(\n  title: [目录],", 1)
+book_typ.write_text(text)
+PY
+
 TMP_TYP="$(mktemp)"
 {
   echo '#import "/theme/book-theme.typ": *'
