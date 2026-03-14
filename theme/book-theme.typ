@@ -9,18 +9,28 @@
 #set heading(numbering: "1.")
 #show heading.where(level: 1): it => {
   pagebreak(weak: true)
-  set text(size: 20pt, weight: "bold")
-  it
+  block(sticky: true)[
+    #set text(size: 20pt, weight: "bold")
+    #it
+  ]
 }
 
-#show heading.where(level: 2): set text(size: 15pt, weight: "semibold")
-#show heading.where(level: 3): set text(size: 12pt, weight: "medium")
+#show heading.where(level: 2): it => block(sticky: true)[
+  #set text(size: 15pt, weight: "semibold")
+  #it
+]
+
+#show heading.where(level: 3): it => block(sticky: true)[
+  #set text(size: 12pt, weight: "medium")
+  #it
+]
 
 #set quote(block: true)
 #set list(indent: 1.2em, spacing: 0.35em)
 #set enum(indent: 1.4em, spacing: 0.35em)
 
 #show raw.where(block: true): it => block(
+  breakable: false,
   inset: (x: 8pt, y: 8pt),
   radius: 4pt,
   fill: luma(245),
