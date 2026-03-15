@@ -88,7 +88,7 @@ make pdf
 ## 参与与反馈
 
 - 上游仓库：<https://github.com/microclaw/microclaw>
-- 如果项目或这本书对你有帮助，欢迎给 `microclaw/microclaw` 点一个 star。
-- 如果你发现书稿、源码或构建链路中的问题，欢迎提交 issue。
-- 如果你补充了修正、文档、图表或示例，欢迎提交 PR。
+- 如果项目或这本书对你有帮助，欢迎给 `microclaw/microclaw` 点一个 `star`。
+- 如果你发现书稿、源码或构建链路中的问题，欢迎提交 `issue`。
+- 如果你补充了修正、文档、图表或示例，欢迎提交 `PR`。
 - 也欢迎关注我的其它作品：<https://github.com/everettjf>
