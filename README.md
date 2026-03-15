@@ -1,8 +1,10 @@
-# Building MicroClaw Book
+# Analyzing MicroClaw Book
 
-本仓库是《从零构建 MicroClaw》书稿工程，采用 `Markdown + Pandoc + Typst` 流水线。
+本仓库是《剖析与实现 MicroClaw》书稿工程，采用 `Markdown + Pandoc + Typst` 流水线。
 
 目标：只保留“写作与出版必须文件”，删除无源价值文件（临时文件、编辑器状态、可再生构建产物）。
+
+版本基线：`microclaw/microclaw@95491b787a61a71f43aeb6556c695a3bd1c006ce`（`v0.1.16`）。
 
 ## 快速开始
 
@@ -27,6 +29,7 @@ make pdf
 - `.gitignore`：忽略编辑器与构建产物
 - `scripts/build-book.sh`：主构建脚本（固定编译顺序）
 - `scripts/audit-files.sh`：文件治理审计脚本（检测“无用途文件”）
+- `assets/figures/*.svg`：正文图表资源
 
 ### 书稿控制文件（根目录）
 
@@ -54,6 +57,7 @@ make pdf
 - `appendices/appendix-a-能力矩阵.md`
 - `appendices/appendix-b-源码导读索引.md`
 - `appendices/appendix-c-实施模板.md`
+- `appendices/appendix-d-最小实现主线.md`
 
 ### 研究资料（仅用于写作参考）
 

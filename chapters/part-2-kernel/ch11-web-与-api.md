@@ -295,6 +295,13 @@ class RunStreamer:
 - 你是否为流式执行设计了真实事件源和 replay 语义？
 - 你是否把鉴权、节流和配置自检纳入控制面基线？
 
+## 证据来源（v0.1.16 / 95491b7）
+
+- 源码基线：<https://github.com/microclaw/microclaw/tree/95491b787a61a71f43aeb6556c695a3bd1c006ce>
+- 核心源码路径：`src/web.rs`、`src/web`、`src/runtime.rs`、`src/agent_engine.rs`
+- 关键配置项：`src/config.rs` 中与 `web_enabled`、`web_port`、控制面鉴权和流式事件相关的默认值
+- 测试 / 运行文档路径：`docs/rfcs/0001-authn-authz-model.md`、`README.md`、`TEST.md`
+
 ## 小结
 
 MicroClaw 的 Web 与 API 设计说明了一件事：控制面不是附加组件，而是 runtime 可托管性的组成部分。它让系统不只“能运行”，还“能被看见、被配置、被限制、被自动化接入”。这也是从个人 bot 迈向工程系统的关键一步。

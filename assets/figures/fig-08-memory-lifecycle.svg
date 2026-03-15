@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 8-1  记忆生命周期与注入路径</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">把文件记忆、结构化记忆、显式 remember、Reflector 和注入预算放进同一条治理链。</text>
+
+  <rect x="90" y="220" width="200" height="96" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="190" y="275" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">User Fact</text>
+
+  <rect x="350" y="140" width="220" height="96" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="460" y="186" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#166534">AGENTS.md</text>
+  <text x="460" y="214" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#166534">global / account / chat</text>
+
+  <rect x="350" y="300" width="220" height="96" rx="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="460" y="346" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#0f4c81">Structured Memory</text>
+  <text x="460" y="374" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#0f4c81">category / confidence / source</text>
+
+  <rect x="650" y="220" width="220" height="96" rx="16" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="760" y="266" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#92400e">Retrieval Gate</text>
+  <text x="760" y="294" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#92400e">相关性 / 预算 / 作用域</text>
+
+  <rect x="940" y="220" width="180" height="96" rx="16" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="1030" y="275" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#991b1b">Prompt</text>
+
+  <rect x="350" y="500" width="220" height="96" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="460" y="545" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">Explicit Remember</text>
+  <text x="460" y="574" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">fast-path / 去重 / supersede</text>
+
+  <rect x="700" y="500" width="220" height="96" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="810" y="545" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">Reflector</text>
+  <text x="810" y="574" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">自动提取 / 质量门控</text>
+
+  <path d="M290 268 H350" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M290 268 C320 268, 320 348, 350 348" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M570 188 C620 188, 620 260, 650 260" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M570 348 C620 348, 620 278, 650 278" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M870 268 H940" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M460 500 V396" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M810 500 V316" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+</svg>

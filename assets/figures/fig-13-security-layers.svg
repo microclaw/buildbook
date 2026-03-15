@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 13-1  多层安全防线</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">安全不是一个开关，而是一组从运行前、运行中到运行后的分层控制。</text>
+
+  <rect x="170" y="180" width="860" height="76" rx="18" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="600" y="228" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="28" font-weight="700" fill="#991b1b">第 1 层：风险分级与审批门</text>
+
+  <rect x="200" y="280" width="800" height="76" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="600" y="328" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="28" font-weight="700" fill="#92400e">第 2 层：执行策略与 sandbox</text>
+
+  <rect x="230" y="380" width="740" height="76" rx="18" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="600" y="428" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="28" font-weight="700" fill="#166534">第 3 层：路径保护 / URL 与内容校验</text>
+
+  <rect x="260" y="480" width="680" height="76" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="600" y="528" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">第 4 层：控制面鉴权 / 作用域 / 节流</text>
+
+  <rect x="290" y="580" width="620" height="76" rx="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="600" y="628" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="28" font-weight="700" fill="#5b21b6">第 5 层：审计、自检、升级与回滚</text>
+
+  <text x="120" y="715" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">核心原则：把宿主机执行、状态数据、凭据、渠道边界和扩展供应链分散到不同控制点，而不是依赖单一防护。</text>
+</svg>

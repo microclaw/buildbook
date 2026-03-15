@@ -1,4 +1,4 @@
-# 《从零构建 MicroClaw》封面设计 Prompt
+# 《剖析与实现 MicroClaw》封面设计 Prompt
 
 ## 目标
 
@@ -9,10 +9,10 @@
 请设计一本技术书封面，主题是“从零构建一个多渠道 Agent Runtime”。风格可受经典技术出版物启发，但必须保持原创，不得复刻任何现有出版社、品牌、logo、版式或受版权保护的具体视觉元素。
 
 书名：
-《从零构建 MicroClaw》
+《剖析与实现 MicroClaw》
 
 副标题：
-多渠道 Agent Runtime 的架构与实践
+基于 v0.1.16 源码的多渠道 Agent Runtime 架构、最小实现与生产实践
 
 作者：
 不显示作者名
@@ -69,8 +69,9 @@ technical book cover, editorial publishing, engraved scientific illustration, mo
 ## 封面文案参考
 
 正面文案：
-- 书名：从零构建 MicroClaw
-- 副标题：多渠道 Agent Runtime 的架构与实践
+- 书名：剖析与实现 MicroClaw
+- 副标题：基于 v0.1.16 源码的多渠道 Agent Runtime 架构、最小实现与生产实践
+- 版本基线：`microclaw/microclaw@95491b787a61a71f43aeb6556c695a3bd1c006ce`
 - 英文眉题：MICROCLAW
 
 封底文案参考：
@@ -91,7 +92,7 @@ technical book cover, editorial publishing, engraved scientific illustration, mo
 - 可观测性
 
 书脊文字：
-- 从零构建 MicroClaw
+- 剖析与实现 MicroClaw
 - MICROCLAW
 
 ## 参数建议

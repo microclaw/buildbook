@@ -5,7 +5,7 @@ ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT_DIR"
 
 # 允许保留的文件模式（路径相对仓库根目录）
-ALLOWED_REGEX='^(README\.md|AGENTS\.md|todo\.md|Makefile|\.gitignore|surface\.png|scripts/(build-book\.sh|audit-files\.sh)|(00-项目总览|01-全书目录|02-写作规范|03-写作路线图|04-进度看板|05-出版构建|06-封面设计-prompt)\.md|build/metadata\.yaml|theme/book-theme\.typ|chapters/part-1-foundation/[^/]+\.md|chapters/part-2-kernel/[^/]+\.md|chapters/part-3-production/[^/]+\.md|appendices/[^/]+\.md|research/compare/[^/]+\.md)$'
+ALLOWED_REGEX='^(README\.md|AGENTS\.md|todo\.md|Makefile|\.gitignore|surface\.png|scripts/(build-book\.sh|audit-files\.sh)|(00-项目总览|01-全书目录|02-写作规范|03-写作路线图|04-进度看板|05-出版构建|06-封面设计-prompt)\.md|build/metadata\.yaml|theme/book-theme\.typ|assets/figures/[^/]+\.svg|chapters/part-1-foundation/[^/]+\.md|chapters/part-2-kernel/[^/]+\.md|chapters/part-3-production/[^/]+\.md|appendices/[^/]+\.md|research/compare/[^/]+\.md)$'
 
 UNKNOWN=()
 while IFS= read -r f; do

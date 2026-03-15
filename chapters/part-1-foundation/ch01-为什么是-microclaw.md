@@ -296,6 +296,13 @@ class AgentRuntime:
 - 你是否理解工具、状态、记忆和调度在这里是一体化设计？
 - 你是否能说清楚 MicroClaw 相比其他项目更偏内聚 runtime，而不是 control plane？
 
+## 证据来源（v0.1.16 / 95491b7）
+
+- 源码基线：<https://github.com/microclaw/microclaw/tree/95491b787a61a71f43aeb6556c695a3bd1c006ce>
+- 核心源码路径：`src/agent_engine.rs`、`src/llm.rs`、`src/tools/mod.rs`、`crates/microclaw-storage/src/db.rs`、`src/scheduler.rs`、`src/web.rs`
+- 关键配置项：`src/config.rs` 中与会话恢复、工具超时、Web 控制面和高风险工具确认相关的默认值
+- 测试 / 运行文档路径：`README.md`、`DEVELOP.md`、`TEST.md`
+
 ## 小结
 
 MicroClaw 之所以值得单独讨论，不是因为它“支持很多平台”，而是因为它试图回答一个更难的问题：如何把 Agent 做成一个真正可运行、可恢复、可维护的系统。

@@ -35,6 +35,7 @@ INPUTS=(
   "appendices/appendix-a-能力矩阵.md"
   "appendices/appendix-b-源码导读索引.md"
   "appendices/appendix-c-实施模板.md"
+  "appendices/appendix-d-最小实现主线.md"
 )
 
 for f in "${INPUTS[@]}"; do

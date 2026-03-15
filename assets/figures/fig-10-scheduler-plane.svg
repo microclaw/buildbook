@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 10-1  后台执行平面</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">Scheduler 把 once、cron、Reflector 和 subagents 收到统一持久化、重放和消息回投路径里。</text>
+
+  <rect x="90" y="220" width="210" height="96" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="195" y="275" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">Trigger</text>
+  <text x="195" y="303" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#1e3a8a">once / cron / recall</text>
+
+  <rect x="370" y="220" width="220" height="96" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="480" y="275" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#166534">Scheduler</text>
+  <text x="480" y="303" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#166534">run_due_tasks / enqueue</text>
+
+  <rect x="670" y="220" width="220" height="96" rx="16" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="780" y="275" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#92400e">Agent Engine</text>
+  <text x="780" y="303" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#92400e">共享主循环</text>
+
+  <rect x="970" y="220" width="160" height="96" rx="16" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="1050" y="275" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#991b1b">Deliver</text>
+
+  <path d="M300 268 H370" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M590 268 H670" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M890 268 H970" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="180" y="500" width="220" height="110" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="290" y="548" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">DLQ</text>
+  <text x="290" y="578" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">失败补偿 / replay</text>
+
+  <rect x="490" y="500" width="220" height="110" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="600" y="548" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">Reflector</text>
+  <text x="600" y="578" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">记忆提取 / 质量门控</text>
+
+  <rect x="800" y="500" width="220" height="110" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="910" y="548" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">Subagents</text>
+  <text x="910" y="578" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">后台 lane / 并发预算</text>
+
+  <path d="M480 316 V500" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M780 316 V500" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M370 268 C320 268, 300 410, 290 500" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+</svg>

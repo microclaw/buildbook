@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 3-1  核心领域模型关系图</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">Chat 提供归属；Session 负责恢复；Message、Task、Memory 分别承担审计、执行与长期事实。</text>
+
+  <rect x="470" y="150" width="260" height="110" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+  <text x="600" y="202" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="32" font-weight="700" fill="#1e3a8a">Chat</text>
+  <text x="600" y="236" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#1e3a8a">渠道归属 / 外部空间 / chat_id</text>
+
+  <rect x="470" y="330" width="260" height="120" rx="18" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+  <text x="600" y="383" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="32" font-weight="700" fill="#166534">Session</text>
+  <text x="600" y="417" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#166534">可恢复推理状态 / compaction 后上下文</text>
+
+  <rect x="120" y="330" width="240" height="120" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="3"/>
+  <text x="240" y="383" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="30" font-weight="700" fill="#92400e">Message</text>
+  <text x="240" y="417" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#92400e">用户输入 / 助手输出 / 工具痕迹</text>
+
+  <rect x="840" y="330" width="240" height="120" rx="18" fill="#fee2e2" stroke="#dc2626" stroke-width="3"/>
+  <text x="960" y="383" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="30" font-weight="700" fill="#991b1b">Task</text>
+  <text x="960" y="417" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#991b1b">once / cron / DLQ / 后台 lane</text>
+
+  <rect x="470" y="530" width="260" height="120" rx="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/>
+  <text x="600" y="583" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="30" font-weight="700" fill="#5b21b6">Memory</text>
+  <text x="600" y="617" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#5b21b6">AGENTS.md / 结构化记忆 / 生命周期</text>
+
+  <path d="M600 260 V330" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M360 390 H470" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M730 390 H840" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M600 450 V530" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="385" y="372" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">审计与回放</text>
+  <text x="760" y="372" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">调度与补偿</text>
+  <text x="625" y="495" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">记忆注入 / 提取</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+</svg>

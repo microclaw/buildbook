@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 14-1  观测与运维闭环</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">让 AgentEvent 转成 Metrics / Traces / Logs，再通过 runbook 把“发现问题”闭环到“恢复问题”。</text>
+
+  <circle cx="600" cy="380" r="90" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+  <text x="600" y="372" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">AgentEvent</text>
+  <text x="600" y="405" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#1e3a8a">Iteration / Tool / FinalResponse</text>
+
+  <rect x="120" y="170" width="220" height="100" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="230" y="228" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="25" font-weight="700" fill="#1f2937">Metrics</text>
+
+  <rect x="860" y="170" width="220" height="100" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="970" y="228" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="25" font-weight="700" fill="#1f2937">Traces</text>
+
+  <rect x="120" y="520" width="220" height="100" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="230" y="578" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="25" font-weight="700" fill="#1f2937">Logs</text>
+
+  <rect x="860" y="520" width="220" height="100" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="970" y="570" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="25" font-weight="700" fill="#1f2937">Runbook</text>
+  <text x="970" y="598" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">发现 / 定位 / 恢复</text>
+
+  <path d="M520 320 L340 255" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M680 320 L860 255" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M520 440 L340 535" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M680 440 L860 535" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="430" y="610" width="340" height="90" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="600" y="660" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#166534">metrics_history / OTLP / Alerts</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+</svg>

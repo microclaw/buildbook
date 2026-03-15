@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 2-1  MicroClaw 一次请求的主路径</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">把入口、恢复、记忆、模型、工具、持久化和输出收束到同一条运行时链路。</text>
+
+  <rect x="70" y="180" width="180" height="96" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="160" y="223" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">Ingress</text>
+  <text x="160" y="252" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#1e3a8a">渠道 / Web / Scheduler</text>
+
+  <rect x="290" y="180" width="180" height="96" rx="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="380" y="223" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#0f4c81">Session</text>
+  <text x="380" y="252" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#0f4c81">恢复 / 历史重建</text>
+
+  <rect x="510" y="180" width="180" height="96" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="600" y="223" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#166534">Memory</text>
+  <text x="600" y="252" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#166534">记忆 / Prompt 组装</text>
+
+  <rect x="730" y="180" width="180" height="96" rx="16" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="820" y="223" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#92400e">LLM + Tools</text>
+  <text x="820" y="252" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#92400e">统一循环 / 工具回灌</text>
+
+  <rect x="950" y="180" width="180" height="96" rx="16" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="1040" y="223" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#991b1b">Persist + Egress</text>
+  <text x="1040" y="252" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#991b1b">落库 / 输出 / 指标</text>
+
+  <path d="M250 228 H290" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M470 228 H510" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M690 228 H730" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M910 228 H950" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="120" y="400" width="300" height="170" rx="18" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="145" y="442" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">共享运行时事实</text>
+  <text x="145" y="482" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">- caller_channel / chat_id</text>
+  <text x="145" y="515" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">- session messages</text>
+  <text x="145" y="548" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">- memory 注入结果</text>
+
+  <rect x="470" y="400" width="300" height="170" rx="18" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="495" y="442" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">统一循环控制点</text>
+  <text x="495" y="482" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">- tool_use / end_turn</text>
+  <text x="495" y="515" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">- approval / cancel / stop</text>
+  <text x="495" y="548" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">- compaction / event stream</text>
+
+  <rect x="820" y="400" width="260" height="170" rx="18" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="845" y="442" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">统一输出结果</text>
+  <text x="845" y="482" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">- Message / Session</text>
+  <text x="845" y="515" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">- usage / audit / metrics</text>
+  <text x="845" y="548" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#334155">- 渠道回投 / Web 流式输出</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+</svg>

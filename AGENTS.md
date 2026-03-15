@@ -2,7 +2,7 @@
 
 ## 项目定位
 
-本仓库用于写作并发布技术书《从零构建 MicroClaw》。
+本仓库用于写作并发布技术书《剖析与实现 MicroClaw》。
 采用 `Markdown + Pandoc + Typst` 构建链路。
 
 核心目标：
@@ -29,6 +29,7 @@
 - `chapters/part-2-kernel/`
 - `chapters/part-3-production/`
 - `appendices/`
+- `assets/figures/`
 - `research/compare/`
 
 构建配置与脚本：
@@ -51,6 +52,7 @@
   - `资料来源`
 - 未经明确确认，不要擅自把“规划章”改为“正文章”。
 - 对比研究仅存放在 `research/compare/`，正文引用后需重写，不直接复制。
+- 上游源码引用默认以 `microclaw/microclaw@95491b787a61a71f43aeb6556c695a3bd1c006ce`（`v0.1.16`）为基线。
 
 ## 构建与校验
 
@@ -73,6 +75,7 @@ make clean
 - 编辑器状态文件（如 `.obsidian/*`）
 - 临时文件（如 `*.tmp`, `*.swp`）
 - 无引用的草稿/重复文档
+- 未进入章节引用的图表源文件
 
 已忽略：
 - `.DS_Store`

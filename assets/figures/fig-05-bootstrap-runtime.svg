@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 5-1  启动链与统一装配图</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">把 CLI、bootstrap、AppState 和 runtime::run 收口成单条启动路径。</text>
+
+  <rect x="70" y="190" width="180" height="90" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="160" y="245" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">main.rs</text>
+
+  <rect x="310" y="190" width="180" height="90" rx="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="400" y="235" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#0f4c81">Bootstrap</text>
+  <text x="400" y="262" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#0f4c81">配置 / 数据目录 / DB</text>
+
+  <rect x="550" y="190" width="220" height="90" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="660" y="235" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="28" font-weight="700" fill="#166534">AppState</text>
+  <text x="660" y="262" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#166534">统一依赖装配</text>
+
+  <rect x="830" y="190" width="220" height="90" rx="16" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="940" y="235" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="28" font-weight="700" fill="#92400e">runtime::run</text>
+  <text x="940" y="262" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#92400e">进入可服务状态</text>
+
+  <path d="M250 235 H310" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M490 235 H550" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M770 235 H830" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="140" y="420" width="180" height="110" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="230" y="468" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#1f2937">Channels</text>
+  <text x="230" y="498" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">ingress / egress</text>
+
+  <rect x="370" y="420" width="180" height="110" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="460" y="468" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#1f2937">Tools</text>
+  <text x="460" y="498" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">风险控制 / sandbox</text>
+
+  <rect x="600" y="420" width="180" height="110" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="690" y="468" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#1f2937">Web</text>
+  <text x="690" y="498" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">控制面 / API / SSE</text>
+
+  <rect x="830" y="420" width="180" height="110" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+  <text x="920" y="468" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="26" font-weight="700" fill="#1f2937">Scheduler</text>
+  <text x="920" y="498" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">后台 lane / Reflector</text>
+
+  <path d="M940 280 V380" stroke="#334155" stroke-width="3"/>
+  <path d="M230 380 H920" stroke="#334155" stroke-width="3"/>
+  <path d="M230 380 V420" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M460 380 V420" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M690 380 V420" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M920 380 V420" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+</svg>

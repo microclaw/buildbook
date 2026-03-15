@@ -1,5 +1,5 @@
-title: "从零构建 MicroClaw"
-subtitle: "多渠道 Agent Runtime 的架构与实践"
+title: "剖析与实现 MicroClaw"
+subtitle: "基于 v0.1.16 源码的多渠道 Agent Runtime 架构、最小实现与生产实践"
 author:
   - "everettjf"
 date: "2026-03-14"
