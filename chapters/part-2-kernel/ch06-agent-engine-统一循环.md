@@ -342,7 +342,7 @@ class AgentEngine:
 - 源码基线：<https://github.com/microclaw/microclaw/tree/95491b787a61a71f43aeb6556c695a3bd1c006ce>
 - 核心源码路径：`src/agent_engine.rs`、`src/llm.rs`、`src/memory_service.rs`
 - 关键配置项：`src/config.rs` 中与 `max_session_messages`、`compact_keep_recent`、`compaction_timeout_secs`、`max_tool_iterations`、`high_risk_tool_user_confirmation_required` 相关的默认值
-- 测试 / 运行文档路径：`docs/llm-provider-conventions.md`、`DEVELOP.md`、`TEST.md`
+- 测试 / 运行文档路径：`docs/llm-provider-conventions.md`（`Rules`）；`DEVELOP.md`（`Architecture overview` -> `Data flow`）；`TEST.md`（`5. Session Management`, `20. Multi-Step Tool Use (Agentic Loop)`, `26. Error Handling & Recovery`）；`docs/test/blackbox-core-20-cases.md`（`TC01`, `TC02`, `TC04`, `TC06`）
 
 ## 小结
 

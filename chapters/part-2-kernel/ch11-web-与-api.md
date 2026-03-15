@@ -300,7 +300,7 @@ class RunStreamer:
 - 源码基线：<https://github.com/microclaw/microclaw/tree/95491b787a61a71f43aeb6556c695a3bd1c006ce>
 - 核心源码路径：`src/web.rs`、`src/web`、`src/runtime.rs`、`src/agent_engine.rs`
 - 关键配置项：`src/config.rs` 中与 `web_enabled`、`web_port`、控制面鉴权和流式事件相关的默认值
-- 测试 / 运行文档路径：`docs/rfcs/0001-authn-authz-model.md`、`README.md`、`TEST.md`
+- 测试 / 运行文档路径：`README.md`（`Local Web UI (cross-channel history)`, `HTTP Request Trigger (headless automation)`, `Configuration`）；`docs/rfcs/0001-authn-authz-model.md`（`API Surface`, `Security Considerations`, `Testing Plan`）；`docs/observability/metrics.md`（`Endpoints`, `SLO Contract (`/api/metrics/summary`)`）；`TEST.md`（`25. Gateway Service Management`）
 
 ## 小结
 

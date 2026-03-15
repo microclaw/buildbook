@@ -301,7 +301,7 @@ class AgentRuntime:
 - 源码基线：<https://github.com/microclaw/microclaw/tree/95491b787a61a71f43aeb6556c695a3bd1c006ce>
 - 核心源码路径：`src/agent_engine.rs`、`src/llm.rs`、`src/tools/mod.rs`、`crates/microclaw-storage/src/db.rs`、`src/scheduler.rs`、`src/web.rs`
 - 关键配置项：`src/config.rs` 中与会话恢复、工具超时、Web 控制面和高风险工具确认相关的默认值
-- 测试 / 运行文档路径：`README.md`、`DEVELOP.md`、`TEST.md`
+- 测试 / 运行文档路径：`README.md`（`Why MicroClaw`, `How it works`, `Features`, `Memory`, `Scheduling`, `Local Web UI (cross-channel history)`）；`DEVELOP.md`（`Architecture overview` -> `Data flow`）；`TEST.md`（`5. Session Management`, `12. Memory System`, `13. Scheduled Tasks`, `20. Multi-Step Tool Use (Agentic Loop)`）
 
 ## 小结
 

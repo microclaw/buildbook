@@ -84,3 +84,11 @@ make pdf
 2. 证据先行：关键结论必须可追溯。
 3. 工程先行：先讲架构决策，再讲实现细节。
 4. 可落地先行：每章必须给出实践清单。
+
+## 参与与反馈
+
+- 上游仓库：<https://github.com/microclaw/microclaw>
+- 如果项目或这本书对你有帮助，欢迎给 `microclaw/microclaw` 点一个 star。
+- 如果你发现书稿、源码或构建链路中的问题，欢迎提交 issue。
+- 如果你补充了修正、文档、图表或示例，欢迎提交 PR。
+- 也欢迎关注我的其它作品：<https://github.com/everettjf>
