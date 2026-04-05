@@ -9,7 +9,12 @@ src = "mdbook-src"
 build-dir = "dist/html"
 create-missing = false
 
+[output.html.playground]
+editable = false
+
 [output.html]
+additional-css = ["mdbook-src/theme/custom.css"]
+additional-js = ["mdbook-src/theme/custom.js"]
 default-theme = "light"
 preferred-dark-theme = "navy"
 git-repository-url = "https://github.com/niceclaw/buildbook"
