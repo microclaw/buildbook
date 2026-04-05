@@ -1,4 +1,97 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
-  <rect width="600" height="200" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
-  <text x="300" y="100" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, sans-serif" font-size="16" fill="#6c757d">图表占位 — 待补充</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-rev" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+      <path d="M8,0 L0,3 L8,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 9-1  多渠道统一接入架构</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">所有渠道通过 ChannelAdapter trait 统一收口，进入共享 Agent Loop，再回投到原渠道。</text>
+
+  <!-- Left: Channel sources -->
+  <rect x="60" y="160" width="160" height="55" rx="12" fill="#dbeafe" stroke="#4A90D9" stroke-width="2"/>
+  <text x="140" y="194" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e3a8a">Telegram</text>
+
+  <rect x="60" y="235" width="160" height="55" rx="12" fill="#dcfce7" stroke="#50B356" stroke-width="2"/>
+  <text x="140" y="269" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#166534">Discord</text>
+
+  <rect x="60" y="310" width="160" height="55" rx="12" fill="#ede9fe" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="140" y="344" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#5b21b6">Slack</text>
+
+  <rect x="60" y="385" width="160" height="55" rx="12" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="140" y="419" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#92400e">飞书 Feishu</text>
+
+  <rect x="60" y="460" width="160" height="55" rx="12" fill="#fee2e2" stroke="#E85D5D" stroke-width="2"/>
+  <text x="140" y="494" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#991b1b">Web UI</text>
+
+  <rect x="60" y="535" width="160" height="55" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="140" y="569" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#0f4c81">Email</text>
+
+  <rect x="60" y="610" width="160" height="55" rx="12" fill="#f3f4f6" stroke="#6B7280" stroke-width="2"/>
+  <text x="140" y="644" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#374151">IRC</text>
+
+  <!-- Middle: ChannelAdapter trait -->
+  <rect x="310" y="200" width="200" height="440" rx="18" fill="#ffffff" stroke="#4A90D9" stroke-width="2.5"/>
+  <text x="410" y="420" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#4A90D9" transform="rotate(-90, 410, 420)">ChannelAdapter Trait</text>
+
+  <text x="335" y="245" font-family="monospace" font-size="12" fill="#475569">fn ingress()</text>
+  <text x="335" y="310" font-family="monospace" font-size="12" fill="#475569">fn egress()</text>
+  <text x="335" y="375" font-family="monospace" font-size="12" fill="#475569">fn parse_event()</text>
+  <text x="335" y="440" font-family="monospace" font-size="12" fill="#475569">fn format_reply()</text>
+  <text x="335" y="505" font-family="monospace" font-size="12" fill="#475569">fn channel_type()</text>
+  <text x="335" y="565" font-family="monospace" font-size="12" fill="#475569">fn supports()</text>
+
+  <!-- Arrows from channels to adapter -->
+  <line x1="220" y1="187" x2="310" y2="240" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="220" y1="262" x2="310" y2="280" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="220" y1="337" x2="310" y2="340" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="220" y1="412" x2="310" y2="400" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="220" y1="487" x2="310" y2="460" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="220" y1="562" x2="310" y2="520" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="220" y1="637" x2="310" y2="580" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Center: Agent Loop -->
+  <rect x="590" y="270" width="260" height="300" rx="20" fill="#dcfce7" stroke="#50B356" stroke-width="3"/>
+  <text x="720" y="315" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#166534">统一 Agent Loop</text>
+  <line x1="615" y1="330" x2="825" y2="330" stroke="#50B356" stroke-width="1"/>
+
+  <text x="625" y="365" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#166534">1. 恢复 Session</text>
+  <text x="625" y="395" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#166534">2. 注入 Memory</text>
+  <text x="625" y="425" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#166534">3. LLM 推理</text>
+  <text x="625" y="455" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#166534">4. 工具执行与回灌</text>
+  <text x="625" y="485" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#166534">5. Compaction</text>
+  <text x="625" y="515" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#166534">6. 落库 + 事件</text>
+  <text x="625" y="545" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#166534">7. 输出回投</text>
+
+  <!-- Arrow from adapter to agent loop -->
+  <path d="M510 420 H590" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="545" y="410" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#475569">ingress</text>
+
+  <!-- Arrow back from agent loop to adapter -->
+  <path d="M590 450 H510" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-rev)"/>
+  <text x="545" y="468" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#94a3b8">egress</text>
+
+  <!-- Right side: supporting services -->
+  <rect x="930" y="200" width="200" height="65" rx="14" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="1030" y="239" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#92400e">Tools</text>
+  <line x1="850" y1="350" x2="930" y2="232" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="930" y="300" width="200" height="65" rx="14" fill="#ede9fe" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="1030" y="339" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#5b21b6">Memory</text>
+  <line x1="850" y1="400" x2="930" y2="332" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="930" y="400" width="200" height="65" rx="14" fill="#dbeafe" stroke="#4A90D9" stroke-width="2"/>
+  <text x="1030" y="439" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e3a8a">Storage</text>
+  <line x1="850" y1="430" x2="930" y2="432" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="930" y="500" width="200" height="65" rx="14" fill="#fee2e2" stroke="#E85D5D" stroke-width="2"/>
+  <text x="1030" y="539" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#991b1b">Scheduler</text>
+  <line x1="850" y1="480" x2="930" y2="532" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Bottom note -->
+  <text x="70" y="720" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#475569">每个渠道只需实现 ChannelAdapter trait 的 5 个方法，即可接入完整的 Agent 能力。渠道互不影响，共享同一运行时。</text>
 </svg>

@@ -1,4 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
-  <rect width="600" height="200" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
-  <text x="300" y="100" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, sans-serif" font-size="16" fill="#6c757d">图表占位 — 待补充</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 4-1  Workspace 八 Crate 依赖图</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">microclaw 二进制在顶层，microclaw-core 为公共基座，中间层按职责分包。</text>
+
+  <!-- Top: microclaw binary -->
+  <rect x="430" y="150" width="340" height="80" rx="16" fill="#fee2e2" stroke="#E85D5D" stroke-width="2.5"/>
+  <text x="600" y="192" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#991b1b">microclaw</text>
+  <text x="600" y="218" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="15" fill="#991b1b">binary / main.rs / CLI 入口</text>
+
+  <!-- Middle row: 6 crates -->
+  <!-- microclaw-app -->
+  <rect x="60" y="330" width="200" height="80" rx="14" fill="#dbeafe" stroke="#4A90D9" stroke-width="2"/>
+  <text x="160" y="370" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="19" font-weight="700" fill="#1e3a8a">microclaw-app</text>
+  <text x="160" y="396" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#1e3a8a">AppState / bootstrap / Web</text>
+
+  <!-- microclaw-channels -->
+  <rect x="280" y="330" width="200" height="80" rx="14" fill="#dcfce7" stroke="#50B356" stroke-width="2"/>
+  <text x="380" y="370" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="19" font-weight="700" fill="#166534">microclaw-channels</text>
+  <text x="380" y="396" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#166534">Telegram / Discord / ...</text>
+
+  <!-- microclaw-tools -->
+  <rect x="500" y="330" width="200" height="80" rx="14" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="600" y="370" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="19" font-weight="700" fill="#92400e">microclaw-tools</text>
+  <text x="600" y="396" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#92400e">bash / file / web / schedule</text>
+
+  <!-- microclaw-storage -->
+  <rect x="720" y="330" width="200" height="80" rx="14" fill="#ede9fe" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="820" y="370" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="19" font-weight="700" fill="#5b21b6">microclaw-storage</text>
+  <text x="820" y="396" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#5b21b6">SQLite / migrations</text>
+
+  <!-- microclaw-observability -->
+  <rect x="940" y="330" width="220" height="80" rx="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="1050" y="370" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f4c81">microclaw-observability</text>
+  <text x="1050" y="396" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#0f4c81">metrics / tracing / OTLP</text>
+
+  <!-- microclaw-clawhub -->
+  <rect x="280" y="480" width="200" height="80" rx="14" fill="#f3f4f6" stroke="#6B7280" stroke-width="2"/>
+  <text x="380" y="520" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="19" font-weight="700" fill="#374151">microclaw-clawhub</text>
+  <text x="380" y="546" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#374151">扩展注册 / 市场</text>
+
+  <!-- Bottom: microclaw-core -->
+  <rect x="380" y="620" width="340" height="80" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+  <text x="550" y="662" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#166534">microclaw-core</text>
+  <text x="550" y="688" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="15" fill="#166534">types / traits / config / error / AgentEvent</text>
+
+  <!-- Arrows from binary to middle layer -->
+  <line x1="500" y1="230" x2="200" y2="330" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="540" y1="230" x2="380" y2="330" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="230" x2="600" y2="330" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="660" y1="230" x2="820" y2="330" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="720" y1="230" x2="1020" y2="330" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrows from app to clawhub -->
+  <line x1="200" y1="410" x2="320" y2="480" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Arrows from middle layer to core -->
+  <line x1="160" y1="410" x2="450" y2="620" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="380" y1="410" x2="500" y2="620" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="410" x2="560" y2="620" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="820" y1="410" x2="620" y2="620" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1050" y1="410" x2="680" y2="620" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="380" y1="560" x2="480" y2="620" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Legend -->
+  <rect x="820" y="520" width="300" height="120" rx="14" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="845" y="550" font-family="PingFang SC, Arial, sans-serif" font-size="17" font-weight="700" fill="#1f2937">依赖方向</text>
+  <line x1="845" y1="575" x2="905" y2="575" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="920" y="580" font-family="PingFang SC, Arial, sans-serif" font-size="15" fill="#475569">编译依赖 (depends on)</text>
+  <line x1="845" y1="610" x2="905" y2="610" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="920" y="615" font-family="PingFang SC, Arial, sans-serif" font-size="15" fill="#475569">可选依赖 (optional)</text>
 </svg>

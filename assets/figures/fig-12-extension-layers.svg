@@ -1,4 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
-  <rect width="600" height="200" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
-  <text x="300" y="100" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, sans-serif" font-size="16" fill="#6c757d">图表占位 — 待补充</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 12-1  五层扩展机制</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">从内置工具到跨 Agent 协议，五层同心环由内而外递增开放度与复杂度。</text>
+
+  <!-- Layer 5 (outermost) - A2A / ACP -->
+  <ellipse cx="480" cy="430" rx="420" ry="270" fill="#fee2e2" stroke="#E85D5D" stroke-width="2.5" opacity="0.4"/>
+  <text x="480" y="185" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="20" font-weight="700" fill="#991b1b">Layer 5: A2A / ACP 协议</text>
+  <text x="480" y="210" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#991b1b">跨 Agent 通信 / Agent-to-Agent / Agent Communication Protocol</text>
+
+  <!-- Layer 4 - Skills / Plugins -->
+  <ellipse cx="480" cy="430" rx="340" ry="215" fill="#fef3c7" stroke="#E8A838" stroke-width="2.5" opacity="0.45"/>
+  <text x="480" y="240" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="20" font-weight="700" fill="#92400e">Layer 4: Skills / Plugins</text>
+  <text x="480" y="265" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#92400e">可热加载技能包 / ClawHub 扩展市场</text>
+
+  <!-- Layer 3 - MCP -->
+  <ellipse cx="480" cy="430" rx="260" ry="165" fill="#ede9fe" stroke="#8B5CF6" stroke-width="2.5" opacity="0.5"/>
+  <text x="480" y="295" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="20" font-weight="700" fill="#5b21b6">Layer 3: MCP</text>
+  <text x="480" y="318" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#5b21b6">Model Context Protocol / 标准化工具发现</text>
+
+  <!-- Layer 2 - Hooks -->
+  <ellipse cx="480" cy="430" rx="185" ry="115" fill="#dcfce7" stroke="#50B356" stroke-width="2.5" opacity="0.55"/>
+  <text x="480" y="345" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="20" font-weight="700" fill="#166534">Layer 2: Hooks</text>
+  <text x="480" y="368" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#166534">Before/After Tool / Session / Turn</text>
+
+  <!-- Layer 1 (innermost) - Built-in Tools -->
+  <ellipse cx="480" cy="430" rx="110" ry="70" fill="#dbeafe" stroke="#4A90D9" stroke-width="3"/>
+  <text x="480" y="420" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="20" font-weight="700" fill="#1e3a8a">Layer 1</text>
+  <text x="480" y="445" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#1e3a8a">Built-in Tools</text>
+  <text x="480" y="465" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="12" fill="#1e3a8a">bash / file / web / schedule</text>
+
+  <!-- Right side: detail cards -->
+  <rect x="920" y="155" width="250" height="100" rx="14" fill="#ffffff" stroke="#E85D5D" stroke-width="2"/>
+  <text x="940" y="185" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="700" fill="#991b1b">A2A / ACP</text>
+  <text x="940" y="210" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">Agent Card 发现</text>
+  <text x="940" y="230" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">Task 交换 / 流式结果</text>
+  <text x="940" y="250" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">身份互信 / 能力声明</text>
+
+  <rect x="920" y="275" width="250" height="100" rx="14" fill="#ffffff" stroke="#E8A838" stroke-width="2"/>
+  <text x="940" y="305" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="700" fill="#92400e">Skills / Plugins</text>
+  <text x="940" y="330" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">WASM / 独立进程 / DSL</text>
+  <text x="940" y="350" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">ClawHub 注册 / 版本化</text>
+  <text x="940" y="370" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">沙箱权限隔离</text>
+
+  <rect x="920" y="395" width="250" height="100" rx="14" fill="#ffffff" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="940" y="425" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="700" fill="#5b21b6">MCP</text>
+  <text x="940" y="450" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">tools/list + tools/call</text>
+  <text x="940" y="470" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">resources + prompts</text>
+  <text x="940" y="490" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">stdio / SSE transport</text>
+
+  <rect x="920" y="515" width="250" height="80" rx="14" fill="#ffffff" stroke="#50B356" stroke-width="2"/>
+  <text x="940" y="545" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="700" fill="#166534">Hooks</text>
+  <text x="940" y="570" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">事件拦截 / 审计日志</text>
+  <text x="940" y="590" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">自定义审批流 / 变换</text>
+
+  <rect x="920" y="615" width="250" height="80" rx="14" fill="#ffffff" stroke="#4A90D9" stroke-width="2"/>
+  <text x="940" y="645" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="700" fill="#1e3a8a">Built-in Tools</text>
+  <text x="940" y="670" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">bash / file_edit / web_search</text>
+  <text x="940" y="690" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#475569">schedule / remember</text>
+
+  <!-- Connecting lines from rings to cards -->
+  <line x1="900" y1="200" x2="920" y2="200" stroke="#E85D5D" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="820" y1="325" x2="920" y2="325" stroke="#E8A838" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="740" y1="440" x2="920" y2="440" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="665" y1="500" x2="920" y2="555" stroke="#50B356" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="590" y1="460" x2="920" y2="655" stroke="#4A90D9" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Bottom label -->
+  <text x="480" y="730" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#475569">开放度与复杂度 ──────────────────→</text>
 </svg>

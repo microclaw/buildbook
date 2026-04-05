@@ -12,7 +12,7 @@
 4. 并行工具执行的 wave 调度
 5. 可落盘、可再次恢复的 session store
 
-只要这 5 件事串起来，你就已经拥有了一个真正意义上的最小 Agent Runtime，而不再只是"调一次模型然后打印结果"的脚本。v0.1.38 把并行工具执行从外挂脚本提升为 runtime 内建调度模型，所以最小实现也必须包含这一层。
+只要这 5 件事串起来，你就已经拥有了一个真正意义上的最小 Agent Runtime，而不再只是"调一次模型然后打印结果"的脚本。MicroClaw 把并行工具执行作为 runtime 内建调度模型，所以最小实现也必须包含这一层。
 
 ## 先明确什么叫"最小"
 
@@ -36,7 +36,7 @@
 
 ## 第一步：先把运行时边界和 crate 结构钉住
 
-最小实现的第一个目标，不是写模型调用，而是先钉住"运行时手里握着什么"。对应 MicroClaw v0.1.38 的 8 workspace crate 架构，最小骨架只需要 3 层：
+最小实现的第一个目标，不是写模型调用，而是先钉住"运行时手里握着什么"。对应 MicroClaw 的 8 workspace crate 架构，最小骨架只需要 3 层：
 
 - 一个模型客户端（对应 `src/llm.rs`）
 - 一个带 concurrency class 的工具注册表（对应 `crates/microclaw-tools/src/runtime.rs` + `src/tools/mod.rs`）
@@ -75,7 +75,7 @@ struct TurnContext {
 
 ## 第三步：让模型返回控制语义，支持多工具调用
 
-一个最小 Agent Runtime 真正和普通聊天脚本拉开差距的地方，是模型不再只返回字符串，而是返回受控语义。v0.1.38 的 LLM 适配层必须能一次返回多个工具调用——这是并行执行的前提。最少要区分两种结果：
+一个最小 Agent Runtime 真正和普通聊天脚本拉开差距的地方，是模型不再只返回字符串，而是返回受控语义。LLM 适配层必须能一次返回多个工具调用——这是并行执行的前提。最少要区分两种结果：
 
 - `EndTurn(text)`：这一轮可以结束
 - `CallTools(vec)`：这一轮要执行一个或多个工具
@@ -93,11 +93,11 @@ enum ModelDecision {
 }
 ```
 
-注意这里从 v0.1.16 的 `CallTool`（单数）变成了 `CallTools(Vec<ToolCall>)`。这不是 API 风格的偏好，而是反映了 MicroClaw v0.1.38 的一个核心设计决策：LLM 可以在一次响应中请求多个工具调用，runtime 负责按 concurrency class 决定哪些并行、哪些串行。
+注意这里使用 `CallTools(Vec<ToolCall>)` 而非单个 `CallTool`。这不是 API 风格的偏好，而是反映了 MicroClaw 的一个核心设计决策：LLM 可以在一次响应中请求多个工具调用，runtime 负责按 concurrency class 决定哪些并行、哪些串行。
 
 ## 第四步：引入 concurrency class 和 wave 分区
 
-这是 v0.1.38 相对于旧版本的关键新增。每个工具都有一个 concurrency class，决定它能否被并行执行：
+每个工具都有一个 concurrency class，决定它能否被并行执行：
 
 ```rust
 #[derive(Debug, Clone, Copy, PartialEq)]

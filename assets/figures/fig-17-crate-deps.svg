@@ -1,4 +1,98 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
-  <rect width="600" height="200" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
-  <text x="300" y="100" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, sans-serif" font-size="16" fill="#6c757d">图表占位 — 待补充</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 17-1  Crate 稳定性分层</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">底层 core 稳定性最高、变更最少；顶层二进制可快速迭代。颜色越深 = 越稳定。</text>
+
+  <!-- Layer backgrounds -->
+  <!-- Layer 3: Binary (top, least stable) -->
+  <rect x="100" y="150" width="800" height="130" rx="20" fill="#fee2e2" stroke="#E85D5D" stroke-width="2" opacity="0.3"/>
+  <text x="120" y="180" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="700" fill="#E85D5D">Layer 3 — 快速迭代层 (Unstable)</text>
+
+  <!-- Layer 2: Middle crates -->
+  <rect x="100" y="300" width="800" height="230" rx="20" fill="#fef3c7" stroke="#E8A838" stroke-width="2" opacity="0.25"/>
+  <text x="120" y="330" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="700" fill="#E8A838">Layer 2 — 功能模块层 (Semi-stable)</text>
+
+  <!-- Layer 1: Core (bottom, most stable) -->
+  <rect x="100" y="550" width="800" height="150" rx="20" fill="#dcfce7" stroke="#50B356" stroke-width="2" opacity="0.3"/>
+  <text x="120" y="580" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="700" fill="#50B356">Layer 1 — 稳定基座层 (Stable)</text>
+
+  <!-- Top: microclaw binary -->
+  <rect x="320" y="195" width="280" height="70" rx="14" fill="#fee2e2" stroke="#E85D5D" stroke-width="2.5"/>
+  <text x="460" y="235" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="20" font-weight="700" fill="#991b1b">microclaw (binary)</text>
+  <text x="460" y="258" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="13" fill="#991b1b">CLI / main.rs</text>
+
+  <!-- Middle: 6 crates in 2 rows -->
+  <rect x="120" y="350" width="230" height="65" rx="12" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="235" y="388" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" font-weight="700" fill="#92400e">microclaw-app</text>
+
+  <rect x="380" y="350" width="230" height="65" rx="12" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="495" y="388" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" font-weight="700" fill="#92400e">microclaw-channels</text>
+
+  <rect x="640" y="350" width="230" height="65" rx="12" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="755" y="388" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" font-weight="700" fill="#92400e">microclaw-tools</text>
+
+  <rect x="120" y="440" width="230" height="65" rx="12" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="235" y="478" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" font-weight="700" fill="#92400e">microclaw-storage</text>
+
+  <rect x="380" y="440" width="230" height="65" rx="12" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="495" y="470" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="15" font-weight="700" fill="#92400e">microclaw-observability</text>
+
+  <rect x="640" y="440" width="230" height="65" rx="12" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="755" y="478" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" font-weight="700" fill="#92400e">microclaw-clawhub</text>
+
+  <!-- Bottom: core -->
+  <rect x="280" y="600" width="360" height="75" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+  <text x="460" y="640" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="22" font-weight="700" fill="#166534">microclaw-core</text>
+  <text x="460" y="665" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#166534">types / traits / config / error / AgentEvent</text>
+
+  <!-- Dependency arrows: binary → middle -->
+  <line x1="380" y1="265" x2="280" y2="350" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="460" y1="265" x2="495" y2="350" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="540" y1="265" x2="710" y2="350" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Middle → core -->
+  <line x1="235" y1="415" x2="380" y2="600" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="495" y1="415" x2="460" y2="600" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="755" y1="415" x2="540" y2="600" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="235" y1="505" x2="360" y2="600" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="495" y1="505" x2="460" y2="600" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="755" y1="505" x2="560" y2="600" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Right side: stability legend -->
+  <rect x="940" y="180" width="230" height="350" rx="16" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="965" y="215" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="700" fill="#1f2937">稳定性规则</text>
+  <line x1="965" y1="230" x2="1145" y2="230" stroke="#e5e7eb" stroke-width="1"/>
+
+  <rect x="965" y="250" width="24" height="24" rx="4" fill="#dcfce7" stroke="#50B356" stroke-width="1.5"/>
+  <text x="1000" y="268" font-family="PingFang SC, Arial, sans-serif" font-size="15" fill="#475569">Stable: 语义化版本</text>
+
+  <rect x="965" y="290" width="24" height="24" rx="4" fill="#fef3c7" stroke="#E8A838" stroke-width="1.5"/>
+  <text x="1000" y="308" font-family="PingFang SC, Arial, sans-serif" font-size="15" fill="#475569">Semi: 接口可演进</text>
+
+  <rect x="965" y="330" width="24" height="24" rx="4" fill="#fee2e2" stroke="#E85D5D" stroke-width="1.5"/>
+  <text x="1000" y="348" font-family="PingFang SC, Arial, sans-serif" font-size="15" fill="#475569">Unstable: 快速迭代</text>
+
+  <line x1="965" y1="370" x2="1145" y2="370" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="965" y="398" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#475569">规则：下层永远不</text>
+  <text x="965" y="420" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#475569">依赖上层。上层变更</text>
+  <text x="965" y="442" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#475569">不破坏下层编译。</text>
+
+  <text x="965" y="478" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#475569">core 的 breaking</text>
+  <text x="965" y="500" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#475569">change 需要全量</text>
+  <text x="965" y="522" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#475569">测试通过后才合并。</text>
+
+  <!-- Bottom arrow showing stability direction -->
+  <line x1="950" y1="680" x2="1150" y2="680" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1050" y="670" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#475569">变更频率</text>
+  <line x1="950" y1="710" x2="1150" y2="710" stroke="#334155" stroke-width="2"/>
+  <line x1="1150" y1="710" x2="1142" y2="704" stroke="#334155" stroke-width="2"/>
+  <line x1="950" y1="710" x2="958" y2="704" stroke="#334155" stroke-width="2"/>
+  <line x1="950" y1="710" x2="958" y2="716" stroke="#334155" stroke-width="2"/>
+  <text x="1050" y="738" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#475569">稳定性</text>
 </svg>

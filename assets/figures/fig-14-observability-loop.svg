@@ -1,36 +1,82 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
-  <rect width="1200" height="760" fill="#fbfaf6"/>
-  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 14-1  观测与运维闭环</text>
-  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">让 AgentEvent 转成 Metrics / Traces / Logs，再通过 runbook 把“发现问题”闭环到“恢复问题”。</text>
-
-  <circle cx="600" cy="380" r="90" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
-  <text x="600" y="372" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">AgentEvent</text>
-  <text x="600" y="405" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#1e3a8a">Iteration / Tool / FinalResponse</text>
-
-  <rect x="120" y="170" width="220" height="100" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
-  <text x="230" y="228" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="25" font-weight="700" fill="#1f2937">Metrics</text>
-
-  <rect x="860" y="170" width="220" height="100" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
-  <text x="970" y="228" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="25" font-weight="700" fill="#1f2937">Traces</text>
-
-  <rect x="120" y="520" width="220" height="100" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
-  <text x="230" y="578" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="25" font-weight="700" fill="#1f2937">Logs</text>
-
-  <rect x="860" y="520" width="220" height="100" rx="16" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
-  <text x="970" y="570" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="25" font-weight="700" fill="#1f2937">Runbook</text>
-  <text x="970" y="598" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="17" fill="#334155">发现 / 定位 / 恢复</text>
-
-  <path d="M520 320 L340 255" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
-  <path d="M680 320 L860 255" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
-  <path d="M520 440 L340 535" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
-  <path d="M680 440 L860 535" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
-
-  <rect x="430" y="610" width="340" height="90" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
-  <text x="600" y="660" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#166534">metrics_history / OTLP / Alerts</text>
-
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
       <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
     </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#50B356"/>
+    </marker>
   </defs>
+
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 14-1  观测与运维闭环</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">AgentEvent 转成 Metrics / Traces / Logs，通过 Runbook 闭环"发现→定位→恢复"。</text>
+
+  <!-- Central: AgentEvent -->
+  <circle cx="400" cy="380" r="100" fill="#dbeafe" stroke="#4A90D9" stroke-width="3"/>
+  <text x="400" y="360" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">AgentEvent</text>
+  <text x="400" y="390" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#1e3a8a">Iteration | Tool</text>
+  <text x="400" y="412" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#1e3a8a">FinalResponse | Error</text>
+  <text x="400" y="434" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#1e3a8a">Compaction | Usage</text>
+
+  <!-- Metrics -->
+  <rect x="100" y="160" width="200" height="100" rx="16" fill="#dcfce7" stroke="#50B356" stroke-width="2.5"/>
+  <text x="200" y="200" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="22" font-weight="700" fill="#166534">Metrics</text>
+  <text x="200" y="225" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#166534">token_count / latency_ms</text>
+  <text x="200" y="245" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#166534">tool_calls / error_rate</text>
+  <path d="M340 310 L280 260" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Traces -->
+  <rect x="550" y="160" width="200" height="100" rx="16" fill="#fef3c7" stroke="#E8A838" stroke-width="2.5"/>
+  <text x="650" y="200" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="22" font-weight="700" fill="#92400e">Traces</text>
+  <text x="650" y="225" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#92400e">span: session → loop → tool</text>
+  <text x="650" y="245" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#92400e">trace_id / parent_span_id</text>
+  <path d="M470 310 L570 260" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Logs -->
+  <rect x="100" y="530" width="200" height="100" rx="16" fill="#ede9fe" stroke="#8B5CF6" stroke-width="2.5"/>
+  <text x="200" y="570" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="22" font-weight="700" fill="#5b21b6">Logs</text>
+  <text x="200" y="595" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#5b21b6">structured JSON</text>
+  <text x="200" y="615" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#5b21b6">tracing crate → OTLP</text>
+  <path d="M340 450 L280 530" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Alerts -->
+  <rect x="550" y="530" width="200" height="100" rx="16" fill="#fee2e2" stroke="#E85D5D" stroke-width="2.5"/>
+  <text x="650" y="570" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="22" font-weight="700" fill="#991b1b">Alerts</text>
+  <text x="650" y="595" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#991b1b">error_rate > threshold</text>
+  <text x="650" y="615" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#991b1b">latency p99 / token 超限</text>
+  <path d="M470 450 L570 530" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Right side: Runbook closed loop -->
+  <rect x="830" y="180" width="320" height="420" rx="20" fill="#ffffff" stroke="#50B356" stroke-width="2.5"/>
+  <text x="990" y="220" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#166534">运维闭环 Runbook</text>
+  <line x1="855" y1="235" x2="1125" y2="235" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Loop steps -->
+  <rect x="870" y="260" width="260" height="55" rx="12" fill="#fee2e2" stroke="#E85D5D" stroke-width="1.5"/>
+  <text x="1000" y="293" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#991b1b">1. 发现 (Detect)</text>
+  <path d="M1000 315 V340" stroke="#50B356" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <rect x="870" y="340" width="260" height="55" rx="12" fill="#fef3c7" stroke="#E8A838" stroke-width="1.5"/>
+  <text x="1000" y="373" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#92400e">2. 定位 (Diagnose)</text>
+  <path d="M1000 395 V420" stroke="#50B356" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <rect x="870" y="420" width="260" height="55" rx="12" fill="#dcfce7" stroke="#50B356" stroke-width="1.5"/>
+  <text x="1000" y="453" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#166534">3. 恢复 (Recover)</text>
+  <path d="M1000 475 V500" stroke="#50B356" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <rect x="870" y="500" width="260" height="55" rx="12" fill="#dbeafe" stroke="#4A90D9" stroke-width="1.5"/>
+  <text x="1000" y="533" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#1e3a8a">4. 预防 (Prevent)</text>
+
+  <!-- Feedback loop arrow -->
+  <path d="M1130 533 C1170 533, 1170 280, 1130 280" fill="none" stroke="#50B356" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+
+  <!-- Arrows from observability to runbook -->
+  <path d="M300 195 C600 140, 780 170, 830 280" fill="none" stroke="#50B356" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-green)"/>
+  <path d="M750 210 H830" stroke="#E8A838" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-green)"/>
+  <path d="M750 580 C810 580, 830 520, 860 520" fill="none" stroke="#E85D5D" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-green)"/>
+
+  <!-- Bottom: storage -->
+  <rect x="250" y="680" width="480" height="55" rx="14" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="490" y="714" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="18" font-weight="600" fill="#374151">metrics_history (SQLite)  |  OTLP Exporter  |  JSON File Sink</text>
 </svg>

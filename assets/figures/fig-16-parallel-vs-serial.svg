@@ -1,4 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
-  <rect width="600" height="200" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
-  <text x="300" y="100" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, sans-serif" font-size="16" fill="#6c757d">图表占位 — 待补充</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+  <text x="70" y="70" font-family="PingFang SC, Arial, sans-serif" font-size="34" font-weight="700" fill="#1f2937">图 16-1  串行 vs. 并行波次执行</text>
+  <text x="70" y="108" font-family="PingFang SC, Arial, sans-serif" font-size="18" fill="#475569">当工具之间无数据依赖时，并行波次可显著缩短端到端延迟。</text>
+
+  <!-- ===== TOP: Serial Execution ===== -->
+  <text x="70" y="180" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#E85D5D">串行执行 Serial</text>
+
+  <!-- Timeline axis -->
+  <line x1="200" y1="260" x2="1100" y2="260" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1110" y="265" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#6B7280">t</text>
+
+  <!-- Tool A (serial) -->
+  <rect x="200" y="210" width="250" height="40" rx="8" fill="#dbeafe" stroke="#4A90D9" stroke-width="2"/>
+  <text x="325" y="236" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="600" fill="#1e3a8a">Tool A (web_search)</text>
+  <text x="325" y="290" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="12" fill="#94a3b8">300ms</text>
+
+  <!-- Tool B (serial) -->
+  <rect x="450" y="210" width="250" height="40" rx="8" fill="#dcfce7" stroke="#50B356" stroke-width="2"/>
+  <text x="575" y="236" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="600" fill="#166534">Tool B (file_read)</text>
+  <text x="575" y="290" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="12" fill="#94a3b8">200ms</text>
+
+  <!-- Tool C (serial) -->
+  <rect x="700" y="210" width="300" height="40" rx="8" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="850" y="236" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="600" fill="#92400e">Tool C (bash_exec)</text>
+  <text x="850" y="290" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="12" fill="#94a3b8">400ms</text>
+
+  <!-- Total time bracket -->
+  <line x1="200" y1="310" x2="200" y2="325" stroke="#E85D5D" stroke-width="2"/>
+  <line x1="1000" y1="310" x2="1000" y2="325" stroke="#E85D5D" stroke-width="2"/>
+  <line x1="200" y1="320" x2="1000" y2="320" stroke="#E85D5D" stroke-width="2"/>
+  <text x="600" y="345" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="700" fill="#E85D5D">总耗时: 900ms</text>
+
+  <!-- ===== BOTTOM: Parallel Wave Execution ===== -->
+  <text x="70" y="420" font-family="PingFang SC, Arial, sans-serif" font-size="24" font-weight="700" fill="#50B356">并行波次 Parallel Waves</text>
+
+  <!-- Timeline axis -->
+  <line x1="200" y1="580" x2="1100" y2="580" stroke="#cbd5e1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1110" y="585" font-family="PingFang SC, Arial, sans-serif" font-size="14" fill="#6B7280">t</text>
+
+  <!-- Wave 1 bracket -->
+  <rect x="180" y="460" width="340" height="115" rx="12" fill="#f0fdf4" stroke="#50B356" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="350" y="482" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" font-weight="700" fill="#50B356">Wave 1 (无依赖，并行)</text>
+
+  <!-- Tool A (parallel) -->
+  <rect x="200" y="495" width="300" height="35" rx="8" fill="#dbeafe" stroke="#4A90D9" stroke-width="2"/>
+  <text x="350" y="518" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="15" font-weight="600" fill="#1e3a8a">Tool A (web_search) 300ms</text>
+
+  <!-- Tool B (parallel, same wave, shorter) -->
+  <rect x="200" y="538" width="200" height="35" rx="8" fill="#dcfce7" stroke="#50B356" stroke-width="2"/>
+  <text x="300" y="561" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="15" font-weight="600" fill="#166534">Tool B (file_read) 200ms</text>
+
+  <!-- Wave 2 bracket -->
+  <rect x="520" y="460" width="340" height="115" rx="12" fill="#fffbeb" stroke="#E8A838" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="690" y="482" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="14" font-weight="700" fill="#E8A838">Wave 2 (依赖 A 的结果)</text>
+
+  <!-- Tool C (wave 2) -->
+  <rect x="540" y="510" width="300" height="35" rx="8" fill="#fef3c7" stroke="#E8A838" stroke-width="2"/>
+  <text x="690" y="533" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="15" font-weight="600" fill="#92400e">Tool C (bash_exec) 400ms</text>
+
+  <!-- Dependency arrow -->
+  <path d="M500 512 H540" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Total time bracket -->
+  <line x1="200" y1="600" x2="200" y2="615" stroke="#50B356" stroke-width="2"/>
+  <line x1="840" y1="600" x2="840" y2="615" stroke="#50B356" stroke-width="2"/>
+  <line x1="200" y1="610" x2="840" y2="610" stroke="#50B356" stroke-width="2"/>
+  <text x="520" y="635" text-anchor="middle" font-family="PingFang SC, Arial, sans-serif" font-size="16" font-weight="700" fill="#50B356">总耗时: 700ms (节省 22%)</text>
+
+  <!-- Savings comparison -->
+  <rect x="200" y="670" width="700" height="60" rx="14" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="230" y="700" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#475569">关键：runtime 分析 tool_use 返回的多个工具调用，按依赖关系分波次。</text>
+  <text x="230" y="722" font-family="PingFang SC, Arial, sans-serif" font-size="16" fill="#475569">同一波次内的工具通过 tokio::join! 并发执行，波次之间顺序执行。</text>
 </svg>

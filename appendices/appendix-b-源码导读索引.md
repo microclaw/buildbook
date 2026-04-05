@@ -2,13 +2,13 @@
 
 ## 目标
 
-本附录给出当前 `microclaw/microclaw` 仓库（v0.1.38）的推荐阅读路径。它不是简单列文件名，而是帮助你按"先建立主链路，再进入细节"的顺序读代码。
+本附录给出当前 `microclaw/microclaw` 仓库的推荐阅读路径。它不是简单列文件名，而是帮助你按"先建立主链路，再进入细节"的顺序读代码。
 
 如果你第一次读源码，建议不要从某个具体渠道文件开始，而是先建立"系统怎样启动、怎样处理一次请求、怎样保存状态"的整体心智。
 
 ## 仓库结构总览
 
-v0.1.38 的仓库由 8 个 workspace crate 组成：
+仓库由 8 个 workspace crate 组成：
 
 | Crate | 职责 | 关键文件 |
 |---|---|---|
@@ -70,7 +70,7 @@ v0.1.38 的仓库由 8 个 workspace crate 组成：
 
 为什么单独把它提升到主链路：
 
-- v0.1.38 引入了 wave-based parallel tool execution，这是理解性能模型的关键。
+- Wave-based parallel tool execution 是理解性能模型的关键。
 - 并行执行不是简单的 `join_all`，而是按 concurrency class 分波调度。
 
 你应该关注：
@@ -96,7 +96,7 @@ v0.1.38 的仓库由 8 个 workspace crate 组成：
 为什么重要：
 
 - 它决定了 provider 差异如何被隔离在协议层，而不污染统一循环。
-- v0.1.38 增加了 per-chat provider/model override，支持运行时动态切换。
+- 支持 per-chat provider/model override，可在运行时动态切换。
 
 ### 6. `crates/microclaw-storage/src/db.rs`（6444 行）
 
@@ -142,7 +142,7 @@ v0.1.38 的仓库由 8 个 workspace crate 组成：
 为什么重要：
 
 - 能快速建立"系统到底让 Agent 能做什么"的全局图。
-- Subagent 工具族（11 个）是 v0.1.38 的重点新增。
+- Subagent 工具族（11 个）是重点模块。
 
 ### 9. `crates/microclaw-tools/src/runtime.rs`（417 行）
 
@@ -219,7 +219,7 @@ v0.1.38 的仓库由 8 个 workspace crate 组成：
 
 为什么重要：
 
-- Hooks 是 v0.1.38 的策略扩展点。它让你不修改源码就能实现"禁止特定工具"、"修改 LLM 请求"、"审计工具输出"等治理需求。
+- Hooks 是策略扩展点。它让你不修改源码就能实现"禁止特定工具"、"修改 LLM 请求"、"审计工具输出"等治理需求。
 
 ### 15. `src/run_control.rs`（128 行）
 
@@ -361,7 +361,7 @@ MCP、Skills、Plugins、Hooks 在不同层解决不同问题。MCP 是外部工
 
 ### 错误四：忽略 tool_executor.rs
 
-v0.1.38 引入了并行工具执行，这不是 agent_engine 的内部细节，而是单独抽取的调度模块。如果你只读 agent_engine 而跳过 tool_executor，会漏掉 wave 分区和 concurrency class 的整个设计。
+并行工具执行不是 agent_engine 的内部细节，而是单独抽取的调度模块。如果你只读 agent_engine 而跳过 tool_executor，会漏掉 wave 分区和 concurrency class 的整个设计。
 
 ### 错误五：把 ACP 和 A2A 混为一谈
 

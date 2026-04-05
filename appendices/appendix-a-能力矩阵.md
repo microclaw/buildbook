@@ -96,7 +96,7 @@
 
 ### 如果你最看重"统一内核 + 可治理 + 渠道覆盖"
 
-优先看 MicroClaw。它的优势不是任何单项功能最强，而是把 16 个渠道、44 个内置工具、结构化记忆、调度、Subagent 编排、Hooks 策略、A2A/ACP 互操作、控制面和观测统一在一个较清晰的 runtime 里。v0.1.38 的 wave-based 并行工具执行和 session-native subagents 进一步拉开了它与"只能串行调一次模型"的 Demo Agent 的距离。
+优先看 MicroClaw。它的优势不是任何单项功能最强，而是把 16 个渠道、44 个内置工具、结构化记忆、调度、Subagent 编排、Hooks 策略、A2A/ACP 互操作、控制面和观测统一在一个较清晰的 runtime 里。Wave-based 并行工具执行和 session-native subagents 进一步拉开了它与"只能串行调一次模型"的 Demo Agent 的距离。
 
 ### 如果你最看重"生态广度"
 
@@ -114,7 +114,7 @@
 
 优先看 NullClaw。它不是最容易上手，但在系统级可裁剪和低开销方向上有独特价值。
 
-## 对 MicroClaw v0.1.38 的定位总结
+## 对 MicroClaw 的定位总结
 
 综合 6 份对比研究，MicroClaw 最稳定的优势并不是"功能最多"，而是：
 
