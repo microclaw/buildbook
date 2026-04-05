@@ -1,0 +1,30 @@
+[book]
+title = "剖析与实现 MicroClaw"
+description = "基于 v0.1.38 源码的多渠道 Agent Runtime 架构、最小实现与生产实践"
+authors = ["everettjf"]
+language = "zh-CN"
+src = "mdbook-src"
+
+[build]
+build-dir = "dist/html"
+create-missing = false
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/niceclaw/buildbook"
+edit-url-template = "https://github.com/niceclaw/buildbook/edit/main/{path}"
+site-url = "/"
+no-section-label = false
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 30
+boost-hierarchy = 2
+
+[output.html.print]
+enable = true

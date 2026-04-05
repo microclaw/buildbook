@@ -1,0 +1,87 @@
+name: Deploy Book
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: "latest"
+
+      - name: Setup Pandoc
+        uses: pandoc/actions/setup@main
+        with:
+          version: "3.6"
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+        with:
+          typst-version: "latest"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install CJK fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra
+
+      - name: Ensure symlinks
+        run: |
+          cd mdbook-src
+          [ -L chapters   ] || ln -sf ../chapters   chapters
+          [ -L appendices ] || ln -sf ../appendices appendices
+          [ -L assets     ] || ln -sf ../assets     assets
+
+      - name: Build HTML (mdBook)
+        run: mdbook build
+
+      - name: Build PDF (Pandoc + Typst)
+        run: |
+          chmod +x deploy.sh
+          ./deploy.sh pdf
+
+      - name: Build EPUB (Pandoc)
+        run: ./deploy.sh epub
+
+      - name: Copy downloads to HTML
+        run: |
+          mkdir -p dist/html/downloads
+          [ -f dist/book.pdf ]  && cp dist/book.pdf  dist/html/downloads/book.pdf
+          [ -f dist/book.epub ] && cp dist/book.epub dist/html/downloads/book.epub
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,106 @@
+<style>
+/* Chinese typography */
+:root {
+  --content-max-width: 900px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.content main {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+
+/* Code blocks */
+code {
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Menlo", monospace;
+  font-size: 0.88em;
+}
+
+pre > code {
+  font-size: 0.85em;
+  line-height: 1.55;
+}
+
+/* Headings */
+.content main h1 {
+  font-size: 2em;
+  margin-top: 1.5em;
+  border-bottom: 2px solid var(--sidebar-bg);
+  padding-bottom: 0.3em;
+}
+
+.content main h2 {
+  font-size: 1.55em;
+  margin-top: 1.8em;
+  border-bottom: 1px solid var(--table-border-color);
+  padding-bottom: 0.2em;
+}
+
+.content main h3 {
+  font-size: 1.25em;
+  margin-top: 1.4em;
+}
+
+/* Tables */
+table {
+  font-size: 0.92em;
+}
+
+table th {
+  white-space: nowrap;
+}
+
+/* Sidebar Chinese font */
+.sidebar .sidebar-scrollbox {
+  font-size: 0.92em;
+  line-height: 1.6;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--sidebar-active);
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: var(--quote-bg);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Print styles */
+@media print {
+  .content main {
+    font-size: 11pt;
+    line-height: 1.7;
+  }
+}
+
+/* Part headers in sidebar */
+.sidebar .chapter li.part-title {
+  font-weight: 700;
+  font-size: 0.95em;
+  margin-top: 1.2em;
+  color: var(--sidebar-fg);
+}
+
+/* Better spacing for download links */
+.content main a[href$=".pdf"],
+.content main a[href$=".epub"] {
+  display: inline-block;
+  padding: 0.4em 1em;
+  margin: 0.3em 0.5em 0.3em 0;
+  background: var(--sidebar-bg);
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.content main a[href$=".pdf"]:hover,
+.content main a[href$=".epub"]:hover {
+  background: var(--sidebar-active);
+  color: var(--sidebar-fg);
+}
+</style>

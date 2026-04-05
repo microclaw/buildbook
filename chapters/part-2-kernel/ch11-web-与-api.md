@@ -8,7 +8,7 @@
 - 一个可流式观察执行过程、支持 SSE 和 WebSocket 的界面。
 - 一个可以中止运行中请求的机制。
 - 一套可自动化访问的 API，带 bootstrap token 和 API key 生命周期管理。
-- 一个前端，使用 React+Vite+TypeScript 和 @assistant-ui/react 构建，能展示 session tree、fork/delete、skills panel 和 usage metrics。
+- 一个前端，使用 React+Vite+TypeScript 和 `@assistant-ui/react` 构建，能展示 session tree、fork/delete、skills panel 和 usage metrics。
 
 MicroClaw v0.1.38 的 `src/web.rs` 已经膨胀到 5500+ 行，`src/web/` 下有 10 个子模块。它不再是一个简单的"聊天前端"，而是 runtime 的完整控制面和可编程界面。
 
@@ -278,7 +278,7 @@ struct WebMetrics {
 
 Web 前端使用 `include_dir` 宏在编译时嵌入到二进制文件中。这意味着部署 MicroClaw 不需要额外的静态文件服务器——前端资产直接从内存中提供。
 
-前端使用 React + Vite + TypeScript 构建，集成了 `@assistant-ui/react` 组件库。这个组件库提供了专业的聊天 UI 组件，包括消息气泡、流式文本显示、工具调用展示等。
+前端使用 React + Vite + TypeScript 构建，集成了 ``@assistant-ui/react`` 组件库。这个组件库提供了专业的聊天 UI 组件，包括消息气泡、流式文本显示、工具调用展示等。
 
 前端的主要面板包括：
 
