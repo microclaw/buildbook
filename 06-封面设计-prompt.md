@@ -12,7 +12,7 @@
 《剖析与实现 MicroClaw》
 
 副标题：
-基于 v0.1.16 源码的多渠道 Agent Runtime 架构、最小实现与生产实践
+基于 v0.1.38 源码的多渠道 Agent Runtime 架构、最小实现与生产实践
 
 作者：
 不显示作者名
@@ -70,8 +70,8 @@ technical book cover, editorial publishing, engraved scientific illustration, mo
 
 正面文案：
 - 书名：剖析与实现 MicroClaw
-- 副标题：基于 v0.1.16 源码的多渠道 Agent Runtime 架构、最小实现与生产实践
-- 版本基线：`microclaw/microclaw@95491b787a61a71f43aeb6556c695a3bd1c006ce`
+- 副标题：基于 v0.1.38 源码的多渠道 Agent Runtime 架构、最小实现与生产实践
+- 版本基线：`microclaw/microclaw` v0.1.38
 - 英文眉题：MICROCLAW
 
 封底文案参考：
