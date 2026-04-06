@@ -1,4 +1,4 @@
-#set text(font: ("PingFang SC", "Songti SC", "Times New Roman"), size: 10.5pt)
+#set text(font: ("PingFang SC", "Songti SC", "Noto Serif CJK SC", "Noto Sans CJK SC", "Times New Roman"), size: 10.5pt)
 #set par(justify: true, leading: 0.75em)
 #set page(
   paper: "a4",
