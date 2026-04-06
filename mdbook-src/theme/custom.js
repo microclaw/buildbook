@@ -2,7 +2,6 @@
   'use strict';
 
   var STORAGE_KEY = 'microclaw-book-reading-progress';
-  // Total chapter count for progress calculation
   var TOTAL_CHAPTERS = 23; // 1 intro + 18 chapters + 4 appendices
 
   // ── Reading Progress (localStorage) ─────────────────────────
@@ -25,14 +24,11 @@
   }
 
   function getPageKey() {
-    // Normalize path: remove trailing .html, query, hash
     var path = window.location.pathname
       .replace(/\.html$/, '')
       .replace(/\/index$/, '')
       .replace(/\/$/, '');
-    // Get just the meaningful part after the last known root segment
     var parts = path.split('/');
-    // Use last 1-3 segments as key
     return parts.slice(-3).join('/');
   }
 
@@ -71,7 +67,6 @@
       '<div>阅读进度 <strong>' + readCount + '/' + TOTAL_CHAPTERS + '</strong> (' + pct + '%)</div>' +
       '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%"></div></div>';
 
-    // Insert after home link
     var homeLink = scrollbox.querySelector('.sidebar-home-link');
     if (homeLink && homeLink.nextSibling) {
       scrollbox.insertBefore(bar, homeLink.nextSibling);
@@ -80,7 +75,18 @@
     }
   }
 
-  // ── Sidebar: Read Checkmarks ────────────────────────────────
+  // ── Sidebar: Read Checkmarks (only on chapter-level links) ──
+
+  function isChapterLink(link) {
+    var href = link.getAttribute('href');
+    if (!href) return false;
+    // Skip anchor-only links (#section) — these are in-page TOC items
+    if (href.charAt(0) === '#') return false;
+    // Skip links that are just anchors on the current page (e.g., "page.html#section")
+    // Chapter links point to a different .html file without # or with just the file
+    if (href.indexOf('#') !== -1) return false;
+    return true;
+  }
 
   function addReadCheckmarks() {
     var pages = getReadPages();
@@ -88,12 +94,10 @@
 
     links.forEach(function(link) {
       if (link.querySelector('.chapter-read-mark')) return;
+      // Only mark chapter-level links, not in-page sub-heading links
+      if (!isChapterLink(link)) return;
 
-      // Get the href and normalize
       var href = link.getAttribute('href');
-      if (!href) return;
-
-      // Resolve to a page key
       var resolved = resolveHref(href);
       if (resolved && pages[resolved]) {
         var check = document.createElement('span');
@@ -106,7 +110,6 @@
   }
 
   function resolveHref(href) {
-    // Create a temporary link to resolve relative paths
     var a = document.createElement('a');
     a.href = href;
     var path = a.pathname
@@ -123,11 +126,9 @@
     var main = document.querySelector('.content main');
     if (!main || main.querySelector('.next-chapter-card')) return;
 
-    // Find mdBook's built-in nav links
     var prevLink = document.querySelector('a.nav-chapters.previous');
     var nextLink = document.querySelector('a.nav-chapters.next');
 
-    // Get chapter titles from sidebar
     var navContainer = document.createElement('div');
     navContainer.style.marginTop = '3em';
 
@@ -162,20 +163,18 @@
 
   function getChapterTitle(href) {
     if (!href) return '';
-    // Try to find the matching sidebar link
     var links = document.querySelectorAll('.sidebar .chapter li a');
     for (var i = 0; i < links.length; i++) {
+      if (!isChapterLink(links[i])) continue;
       var linkHref = links[i].getAttribute('href');
       if (linkHref && href.endsWith(linkHref.replace(/^\.\//, '').replace(/^\.\.\//, ''))) {
-        // Get text content without the checkmark
-        var text = links[i].textContent.replace(/\s*✓$/, '').trim();
-        return text;
+        return links[i].textContent.replace(/\s*✓$/, '').trim();
       }
     }
-    // Fallback: try to resolve via full path match
     var a = document.createElement('a');
     a.href = href;
     for (var j = 0; j < links.length; j++) {
+      if (!isChapterLink(links[j])) continue;
       var b = document.createElement('a');
       b.href = links[j].getAttribute('href');
       if (a.pathname === b.pathname) {
@@ -194,11 +193,9 @@
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       var docHeight = document.documentElement.scrollHeight;
       var winHeight = window.innerHeight;
-      // Mark as read when user scrolls past 70% of the page
       if (scrollTop + winHeight > docHeight * 0.7) {
         marked = true;
         markCurrentPageRead();
-        // Update sidebar checkmarks and progress bar
         addReadCheckmarks();
         var scrollbox = document.querySelector('.sidebar .sidebar-scrollbox');
         if (scrollbox) {
@@ -209,7 +206,6 @@
       }
     }
     window.addEventListener('scroll', checkScroll, { passive: true });
-    // Also check immediately in case the page is short
     setTimeout(checkScroll, 500);
   }
 
