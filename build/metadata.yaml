@@ -9,3 +9,6 @@ toc-title: "目录"
 toc-depth: 3
 number-sections: true
 highlight-style: tango
+mainfont: "Noto Serif CJK SC"
+sansfont: "Noto Sans CJK SC"
+monofont: "Noto Sans Mono CJK SC"

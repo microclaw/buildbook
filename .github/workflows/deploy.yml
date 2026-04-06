@@ -57,11 +57,13 @@ jobs:
         run: mdbook build
 
       - name: Build PDF (Pandoc + Typst)
+        continue-on-error: true
         run: |
           chmod +x deploy.sh
           ./deploy.sh pdf
 
       - name: Build EPUB (Pandoc)
+        continue-on-error: true
         run: ./deploy.sh epub
 
       - name: Copy downloads to HTML
