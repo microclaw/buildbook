@@ -184,4 +184,4 @@ MicroClaw 把 Agent 当作一个长期运行、可恢复、可中断、可观测
 
 ### 图 1-1：传统聊天机器人与执行型 Agent Runtime 的能力差异
 
-![图 1-1：传统聊天机器人与执行型 Agent Runtime 的能力差异](../assets/figures/fig-01-chatbot-vs-runtime.svg)
+![图 1-1：传统聊天机器人与执行型 Agent Runtime 的能力差异](../../assets/figures/fig-01-chatbot-vs-runtime.svg)

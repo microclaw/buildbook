@@ -233,4 +233,4 @@ impl<S: EventSink> RunStreamer<S> {
 
 ### 图 11-1：Web 控制面在 runtime 中的位置
 
-![图 11-1：Web 控制面在 runtime 中的位置](../assets/figures/fig-11-web-control-plane.svg)
+![图 11-1：Web 控制面在 runtime 中的位置](../../assets/figures/fig-11-web-control-plane.svg)

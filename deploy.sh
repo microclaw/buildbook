@@ -104,12 +104,16 @@ build_pdf() {
     "${INPUTS[@]}" \
     -o "$TYP_FILE"
 
-  # 后处理：目录标题改中文
+  # 后处理：目录标题改中文 + 修正图片路径（让 --root 解析）
   python3 - <<'PY'
 from pathlib import Path
 p = Path("dist/book.typ")
 t = p.read_text()
 t = t.replace("#outline(\n  title: auto,", "#outline(\n  title: [目录],", 1)
+# 章节中图片路径在源 markdown 里是 ../../assets/...（相对 chapters/part-X/）。
+# pandoc 转 typst 后字符串保留；从 dist/book.typ 看就是错的。
+# typst compile --root <repo> 已设置：把图片路径改成以 / 开头即可由 --root 解析。
+t = t.replace('image("../../assets/figures/', 'image("/assets/figures/')
 p.write_text(t)
 PY
 

@@ -250,4 +250,4 @@ impl<M: ModelClient> AgentEngine<M> {
 
 ### 图 6-1：`process_with_agent` 统一循环
 
-![图 6-1：`process_with_agent` 统一循环](../assets/figures/fig-06-agent-loop.svg)
+![图 6-1：`process_with_agent` 统一循环](../../assets/figures/fig-06-agent-loop.svg)

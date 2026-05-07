@@ -1,68 +1,149 @@
-/* ── Chinese typography ──────────────────────────── */
+/* ── 全局排版基线 ─────────────────────────────────── */
 :root {
-  --content-max-width: 900px;
+  --content-max-width: 980px;
+  --content-padding-x: 24px;
+}
+
+html {
+  font-size: 17px; /* 全局基础字号上调，影响所有 rem 单位 */
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .content main {
   font-size: 1.05rem;
-  line-height: 1.85;
-  letter-spacing: 0.02em;
+  line-height: 1.95;
+  letter-spacing: 0.015em;
+  padding: 0 var(--content-padding-x);
 }
 
+.content main p {
+  margin: 1.05em 0;
+}
+
+/* ── 代码字体 ─────────────────────────────────────── */
 code {
-  font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Menlo", monospace;
-  font-size: 0.88em;
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Menlo", "Source Code Pro", monospace;
+  font-size: 0.92em;
+  letter-spacing: 0;
 }
 
 pre > code {
-  font-size: 0.85em;
-  line-height: 1.55;
+  font-size: 0.9em;
+  line-height: 1.65;
 }
 
-/* ── Headings ───────────────────────────────────── */
+:not(pre) > code {
+  padding: 0.12em 0.4em;
+  border-radius: 3px;
+  background: var(--inline-code-bg, rgba(127, 127, 127, 0.12));
+}
+
+pre {
+  border-radius: 6px;
+  padding: 1em 1.1em !important;
+  border: 1px solid var(--table-border-color);
+}
+
+/* ── 标题 ─────────────────────────────────────────── */
 .content main h1 {
-  font-size: 2em;
-  margin-top: 1.5em;
-  border-bottom: 2px solid var(--sidebar-bg);
+  font-size: 2.05em;
+  margin-top: 1.4em;
+  margin-bottom: 0.7em;
+  border-bottom: 2px solid var(--sidebar-active);
   padding-bottom: 0.3em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .content main h2 {
   font-size: 1.55em;
-  margin-top: 1.8em;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
   border-bottom: 1px solid var(--table-border-color);
-  padding-bottom: 0.2em;
+  padding-bottom: 0.25em;
+  font-weight: 650;
 }
 
 .content main h3 {
   font-size: 1.25em;
-  margin-top: 1.4em;
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
 }
 
-/* ── Tables ─────────────────────────────────────── */
+.content main h4 {
+  font-size: 1.1em;
+  margin-top: 1.4em;
+  margin-bottom: 0.4em;
+  font-weight: 600;
+  color: var(--fg);
+  opacity: 0.95;
+}
+
+/* 章节顶部标题（page header）在 light/dark 主题下都要保证强对比 */
+.menu-title {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ── 表格 ─────────────────────────────────────────── */
 table {
-  font-size: 0.92em;
+  font-size: 0.95em;
+  margin: 1.2em 0;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 table th {
   white-space: nowrap;
+  background: var(--table-header-bg);
+  font-weight: 600;
+  padding: 0.55em 0.9em;
 }
 
-/* ── Blockquotes ────────────────────────────────── */
+table td {
+  padding: 0.5em 0.9em;
+  vertical-align: top;
+}
+
+/* ── 引用块 ───────────────────────────────────────── */
 blockquote {
-  border-left: 4px solid var(--sidebar-active);
-  padding: 0.5em 1em;
-  margin: 1em 0;
+  border-left: 3px solid var(--sidebar-active);
+  padding: 0.6em 1.1em;
+  margin: 1.2em 0;
   background: var(--quote-bg);
   border-radius: 0 4px 4px 0;
 }
 
-/* ── Print ──────────────────────────────────────── */
+/* ── 链接 ─────────────────────────────────────────── */
+.content main a:not(.header):not(.next-chapter-card):not(.prev-chapter-card):not([href$=".pdf"]):not([href$=".epub"]) {
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+  padding-bottom: 1px;
+}
+
+.content main a:not(.header):not(.next-chapter-card):not(.prev-chapter-card):not([href$=".pdf"]):not([href$=".epub"]):hover {
+  border-bottom-style: solid;
+}
+
+/* ── 图片 ─────────────────────────────────────────── */
+.content main img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.2em auto;
+  border-radius: 4px;
+}
+
+/* ── 打印样式 ─────────────────────────────────────── */
 @media print {
   .content main {
     font-size: 11pt;
@@ -70,62 +151,132 @@ blockquote {
   }
 }
 
-/* ── Download links ─────────────────────────────── */
+/* ── 下载按钮（PDF / EPUB） ───────────────────────── */
 .content main a[href$=".pdf"],
 .content main a[href$=".epub"] {
   display: inline-block;
-  padding: 0.4em 1em;
+  padding: 0.5em 1.1em;
   margin: 0.3em 0.5em 0.3em 0;
   background: var(--sidebar-bg);
+  color: var(--sidebar-fg) !important;
   border-radius: 4px;
   text-decoration: none;
   font-weight: 500;
+  border: 1px solid var(--table-border-color);
+  transition: transform 0.12s, box-shadow 0.12s;
 }
 
 .content main a[href$=".pdf"]:hover,
 .content main a[href$=".epub"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   background: var(--sidebar-active);
-  color: var(--sidebar-fg);
 }
 
-/* ── Sidebar: compact & tidy ────────────────────── */
+/* ── 主题色覆盖：light ────────────────────────────── */
+.light {
+  --sidebar-bg: #f3f4f6;
+  --sidebar-fg: #2d2d2d;
+  --sidebar-active: #2563eb;
+  --table-border-color: #e0e2e5;
+  --table-header-bg: #f8f9fa;
+  --quote-bg: #f7f8fa;
+  --inline-code-bg: rgba(0, 0, 0, 0.06);
+}
+
+.light .content main {
+  color: #1f2328;
+}
+
+.light .content main h1 {
+  color: #0f172a;
+}
+
+.light .content main h2,
+.light .content main h3 {
+  color: #1f2937;
+}
+
+/* ── 主题色覆盖：navy（默认 dark） ────────────────── */
+.navy {
+  --sidebar-bg: #1a2538;
+  --sidebar-fg: #d8e0ec;
+  --sidebar-active: #4ea1ff;
+  --table-border-color: #2c3a51;
+  --table-header-bg: #1c2940;
+  --quote-bg: #1a2236;
+  --inline-code-bg: rgba(255, 255, 255, 0.08);
+  --fg: #d6dde8;
+  --bg: #161e2c;
+}
+
+.navy .content main {
+  color: #d6dde8;
+}
+
+.navy .content main h1,
+.navy .content main h2,
+.navy .content main h3,
+.navy .content main h4 {
+  color: #ffffff;
+}
+
+.navy .menu-title {
+  color: #ffffff !important;
+  opacity: 0.95;
+}
+
+.navy pre {
+  background: #0f1827 !important;
+}
+
+/* ── Sidebar：紧凑、可读 ─────────────────────────── */
 .sidebar .sidebar-scrollbox {
-  font-size: 0.92em;
-  line-height: 1.6;
+  font-size: 0.93em;
+  line-height: 1.7;
+  padding: 0.4em 1.4em;
 }
 
 .sidebar .chapter li.part-title {
   font-weight: 700;
   font-size: 0.95em;
-  margin-top: 1.2em;
+  margin-top: 1.4em;
+  letter-spacing: 0.02em;
   color: var(--sidebar-fg);
+  opacity: 0.85;
+  text-transform: none;
 }
 
-/* Hide the right-side in-page TOC panel to keep layout clean */
+.sidebar .chapter li > a {
+  padding: 0.3em 0.5em;
+  border-radius: 3px;
+}
+
+/* 隐藏右侧浮动 TOC 面板，让正文居中 */
 .sidebar-iframe-outer {
   display: none !important;
 }
 
-/* ── Sidebar: home button ───────────────────────── */
+/* ── Sidebar：home 按钮 ──────────────────────────── */
 .sidebar-home-link {
   display: flex;
   align-items: center;
-  gap: 0.5em;
-  padding: 0.65em 1em;
-  margin: 0 0 0.6em 0;
-  background: rgba(255, 255, 255, 0.07);
+  gap: 0.55em;
+  padding: 0.7em 1em;
+  margin: 0 0 0.7em 0;
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 6px;
-  font-size: 1em;
+  font-size: 0.98em;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none !important;
   color: var(--sidebar-fg) !important;
-  transition: background 0.15s;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.15s, border-color 0.15s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-home-link:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -136,20 +287,20 @@ blockquote {
 }
 
 .light .sidebar-home-link {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.04);
   border-color: rgba(0, 0, 0, 0.1);
 }
 
 .light .sidebar-home-link:hover {
-  background: rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
-/* ── Sidebar: reading progress bar ──────────────── */
+/* ── Sidebar：阅读进度条 ─────────────────────────── */
 .reading-progress-bar {
-  margin: 0 0 0.8em 0;
+  margin: 0 0 0.9em 0;
   padding: 0.5em 1em;
-  font-size: 0.82em;
+  font-size: 0.83em;
   color: var(--sidebar-non-existant);
 }
 
@@ -163,7 +314,7 @@ blockquote {
 
 .reading-progress-bar .progress-fill {
   height: 100%;
-  background: #4A90D9;
+  background: var(--sidebar-active);
   border-radius: 3px;
   transition: width 0.4s ease;
 }
@@ -172,15 +323,19 @@ blockquote {
   background: rgba(0, 0, 0, 0.08);
 }
 
-/* ── Sidebar: read checkmark on chapter links ───── */
+/* ── 侧栏：已读勾 ────────────────────────────────── */
 .chapter-read-mark {
   display: inline-block;
   margin-left: 0.3em;
-  color: #50B356;
+  color: #4ade80;
   font-size: 0.85em;
 }
 
-/* ── Bottom navigation: next chapter card ───────── */
+.light .chapter-read-mark {
+  color: #16a34a;
+}
+
+/* ── 底部下一章 / 上一章卡片 ─────────────────────── */
 .next-chapter-card {
   display: flex;
   align-items: center;
@@ -197,7 +352,7 @@ blockquote {
 
 .next-chapter-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .next-chapter-card .next-label {
@@ -221,14 +376,14 @@ blockquote {
   display: flex;
   align-items: center;
   margin: 0 0 1em 0;
-  padding: 0.8em 1.2em;
+  padding: 0.85em 1.2em;
   background: var(--sidebar-bg);
   border-radius: 8px;
   text-decoration: none !important;
   color: var(--fg) !important;
   border: 1px solid var(--table-border-color);
   transition: transform 0.15s;
-  font-size: 0.92em;
+  font-size: 0.94em;
 }
 
 .prev-chapter-card:hover {
@@ -240,7 +395,7 @@ blockquote {
   opacity: 0.5;
 }
 
-/* Hide mdBook default side-arrows (we use bottom cards instead) */
+/* mdBook 自带左右翻页箭头淡化（用底部卡片代替） */
 .nav-chapters {
   opacity: 0.3;
 }

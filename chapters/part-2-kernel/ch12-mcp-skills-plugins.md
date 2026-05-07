@@ -310,4 +310,4 @@ impl<M: McpClient, S: SkillCatalog, H: HookRunner> ExtensionRuntime<M, S, H> {
 
 ### 图 12-1：扩展机制的分层位置图
 
-![图 12-1：扩展机制的分层位置图](../assets/figures/fig-12-extension-layers.svg)
+![图 12-1：扩展机制的分层位置图](../../assets/figures/fig-12-extension-layers.svg)
