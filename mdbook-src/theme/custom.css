@@ -2,10 +2,15 @@
 :root {
   --content-max-width: 980px;
   --content-padding-x: 24px;
+  --accent: #ea580c;          /* 主强调色：阳光橙 */
+  --accent-soft: #fb923c;     /* 浅橙，悬浮 / hover */
+  --accent-deep: #c2410c;     /* 暗一档橙，强调标题边 */
+  --accent-warm: #f59e0b;     /* 琥珀黄，次级强调 */
+  --accent-leaf: #16a34a;     /* 绿叶，对照点缀 */
 }
 
 html {
-  font-size: 17px; /* 全局基础字号上调，影响所有 rem 单位 */
+  font-size: 17px;
 }
 
 body {
@@ -41,15 +46,17 @@ pre > code {
 }
 
 :not(pre) > code {
-  padding: 0.12em 0.4em;
-  border-radius: 3px;
-  background: var(--inline-code-bg, rgba(127, 127, 127, 0.12));
+  padding: 0.12em 0.42em;
+  border-radius: 4px;
+  background: var(--inline-code-bg);
+  color: var(--inline-code-fg, inherit);
 }
 
 pre {
-  border-radius: 6px;
-  padding: 1em 1.1em !important;
-  border: 1px solid var(--table-border-color);
+  border-radius: 8px;
+  padding: 1em 1.15em !important;
+  border: 1px solid var(--code-border);
+  background: var(--code-bg) !important;
 }
 
 /* ── 标题 ─────────────────────────────────────────── */
@@ -57,7 +64,7 @@ pre {
   font-size: 2.05em;
   margin-top: 1.4em;
   margin-bottom: 0.7em;
-  border-bottom: 2px solid var(--sidebar-active);
+  border-bottom: 3px solid var(--accent);
   padding-bottom: 0.3em;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -67,7 +74,7 @@ pre {
   font-size: 1.55em;
   margin-top: 2em;
   margin-bottom: 0.6em;
-  border-bottom: 1px solid var(--table-border-color);
+  border-bottom: 1px solid var(--accent-warm);
   padding-bottom: 0.25em;
   font-weight: 650;
 }
@@ -84,11 +91,8 @@ pre {
   margin-top: 1.4em;
   margin-bottom: 0.4em;
   font-weight: 600;
-  color: var(--fg);
-  opacity: 0.95;
 }
 
-/* 章节顶部标题（page header）在 light/dark 主题下都要保证强对比 */
 .menu-title {
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -100,38 +104,52 @@ table {
   margin: 1.2em 0;
   border-collapse: collapse;
   width: 100%;
+  border: 1px solid var(--table-border-color);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 table th {
   white-space: nowrap;
   background: var(--table-header-bg);
+  color: var(--table-header-fg);
   font-weight: 600;
-  padding: 0.55em 0.9em;
+  padding: 0.6em 0.95em;
+  border-bottom: 2px solid var(--accent-warm);
 }
 
 table td {
-  padding: 0.5em 0.9em;
+  padding: 0.55em 0.9em;
   vertical-align: top;
+  border-top: 1px solid var(--table-border-color);
+}
+
+table tr:nth-child(even) td {
+  background: var(--table-zebra);
 }
 
 /* ── 引用块 ───────────────────────────────────────── */
 blockquote {
-  border-left: 3px solid var(--sidebar-active);
-  padding: 0.6em 1.1em;
+  border-left: 4px solid var(--accent-warm);
+  padding: 0.65em 1.1em;
   margin: 1.2em 0;
   background: var(--quote-bg);
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 6px 6px 0;
+  color: var(--quote-fg, inherit);
 }
 
 /* ── 链接 ─────────────────────────────────────────── */
 .content main a:not(.header):not(.next-chapter-card):not(.prev-chapter-card):not([href$=".pdf"]):not([href$=".epub"]) {
+  color: var(--accent-deep);
   text-decoration: none;
-  border-bottom: 1px dashed currentColor;
+  border-bottom: 1px dashed var(--accent-soft);
   padding-bottom: 1px;
 }
 
 .content main a:not(.header):not(.next-chapter-card):not(.prev-chapter-card):not([href$=".pdf"]):not([href$=".epub"]):hover {
+  color: var(--accent);
   border-bottom-style: solid;
+  border-bottom-color: var(--accent);
 }
 
 /* ── 图片 ─────────────────────────────────────────── */
@@ -139,8 +157,9 @@ blockquote {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 1.2em auto;
-  border-radius: 4px;
+  margin: 1.4em auto;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px var(--img-shadow, rgba(0, 0, 0, 0.08));
 }
 
 /* ── 打印样式 ─────────────────────────────────────── */
@@ -155,82 +174,130 @@ blockquote {
 .content main a[href$=".pdf"],
 .content main a[href$=".epub"] {
   display: inline-block;
-  padding: 0.5em 1.1em;
+  padding: 0.55em 1.15em;
   margin: 0.3em 0.5em 0.3em 0;
-  background: var(--sidebar-bg);
-  color: var(--sidebar-fg) !important;
-  border-radius: 4px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: #ffffff !important;
+  border-radius: 6px;
   text-decoration: none;
-  font-weight: 500;
-  border: 1px solid var(--table-border-color);
-  transition: transform 0.12s, box-shadow 0.12s;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25);
+  transition: transform 0.12s, box-shadow 0.15s;
 }
 
 .content main a[href$=".pdf"]:hover,
 .content main a[href$=".epub"]:hover {
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  background: var(--sidebar-active);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
 }
 
-/* ── 主题色覆盖：light ────────────────────────────── */
+/* ── Light：阳光奶油主题 ───────────────────────── */
 .light {
-  --sidebar-bg: #f3f4f6;
-  --sidebar-fg: #2d2d2d;
-  --sidebar-active: #2563eb;
-  --table-border-color: #e0e2e5;
-  --table-header-bg: #f8f9fa;
-  --quote-bg: #f7f8fa;
-  --inline-code-bg: rgba(0, 0, 0, 0.06);
+  --bg: #fffaf3;
+  --fg: #2c2418;
+  --sidebar-bg: #fef3e1;
+  --sidebar-fg: #5a3a18;
+  --sidebar-non-existant: #a47a4a;
+  --sidebar-active: var(--accent);
+  --sidebar-spacer: rgba(234, 88, 12, 0.18);
+  --table-border-color: #f0dfc1;
+  --table-header-bg: #fff4e1;
+  --table-header-fg: #6b3e15;
+  --table-zebra: #fffaf0;
+  --code-bg: #fff8ec;
+  --code-border: #f3e3c5;
+  --inline-code-bg: rgba(234, 88, 12, 0.08);
+  --inline-code-fg: #b9450b;
+  --quote-bg: #fff7e6;
+  --quote-fg: #5a4318;
+  --img-shadow: rgba(180, 100, 40, 0.12);
+}
+
+.light body {
+  background: var(--bg) !important;
+  color: var(--fg) !important;
 }
 
 .light .content main {
-  color: #1f2328;
+  color: var(--fg);
 }
 
 .light .content main h1 {
-  color: #0f172a;
+  color: #1a1308;
 }
 
 .light .content main h2,
-.light .content main h3 {
-  color: #1f2937;
+.light .content main h3,
+.light .content main h4 {
+  color: #2c1f0e;
 }
 
-/* ── 主题色覆盖：navy（默认 dark） ────────────────── */
+.light .menu-title {
+  color: #2c1f0e !important;
+}
+
+.light .nav-chapters {
+  color: #b9683a !important;
+}
+
+/* ── Navy（重命名为暖深色）：晚霞主题 ──────────── */
 .navy {
-  --sidebar-bg: #1a2538;
-  --sidebar-fg: #d8e0ec;
-  --sidebar-active: #4ea1ff;
-  --table-border-color: #2c3a51;
-  --table-header-bg: #1c2940;
-  --quote-bg: #1a2236;
-  --inline-code-bg: rgba(255, 255, 255, 0.08);
-  --fg: #d6dde8;
-  --bg: #161e2c;
+  --bg: #221a13;
+  --fg: #efe2cc;
+  --sidebar-bg: #2c2218;
+  --sidebar-fg: #f5e9d6;
+  --sidebar-non-existant: #b39977;
+  --sidebar-active: #fb923c;
+  --sidebar-spacer: rgba(251, 146, 60, 0.18);
+  --table-border-color: #3d2f23;
+  --table-header-bg: #2e2418;
+  --table-header-fg: #ffe8c4;
+  --table-zebra: #261d14;
+  --code-bg: #1a120a;
+  --code-border: #3d2f23;
+  --inline-code-bg: rgba(251, 146, 60, 0.18);
+  --inline-code-fg: #ffd0a4;
+  --quote-bg: #2a1f14;
+  --quote-fg: #f0dfc4;
+  --img-shadow: rgba(0, 0, 0, 0.45);
+  --accent: #fb923c;
+  --accent-soft: #fdba74;
+  --accent-deep: #fb923c;
+  --accent-warm: #fbbf24;
+  --accent-leaf: #4ade80;
+}
+
+.navy body {
+  background: var(--bg) !important;
+  color: var(--fg) !important;
 }
 
 .navy .content main {
-  color: #d6dde8;
+  color: var(--fg);
 }
 
 .navy .content main h1,
 .navy .content main h2,
 .navy .content main h3,
 .navy .content main h4 {
-  color: #ffffff;
+  color: #fff7e6;
 }
 
 .navy .menu-title {
-  color: #ffffff !important;
-  opacity: 0.95;
+  color: #fff7e6 !important;
 }
 
 .navy pre {
-  background: #0f1827 !important;
+  background: var(--code-bg) !important;
 }
 
-/* ── Sidebar：紧凑、可读 ─────────────────────────── */
+/* ── Sidebar ─────────────────────────────────────── */
+.sidebar {
+  background: var(--sidebar-bg);
+  color: var(--sidebar-fg);
+}
+
 .sidebar .sidebar-scrollbox {
   font-size: 0.93em;
   line-height: 1.7;
@@ -242,17 +309,36 @@ blockquote {
   font-size: 0.95em;
   margin-top: 1.4em;
   letter-spacing: 0.02em;
-  color: var(--sidebar-fg);
-  opacity: 0.85;
+  color: var(--accent-deep);
   text-transform: none;
 }
 
-.sidebar .chapter li > a {
-  padding: 0.3em 0.5em;
-  border-radius: 3px;
+.navy .sidebar .chapter li.part-title {
+  color: var(--accent-soft);
 }
 
-/* 隐藏右侧浮动 TOC 面板，让正文居中 */
+.sidebar .chapter li > a {
+  padding: 0.32em 0.6em;
+  border-radius: 4px;
+  color: var(--sidebar-fg);
+}
+
+.sidebar .chapter li > a:hover {
+  background: rgba(234, 88, 12, 0.1);
+  color: var(--accent-deep);
+}
+
+.navy .sidebar .chapter li > a:hover {
+  background: rgba(251, 146, 60, 0.18);
+  color: var(--accent);
+}
+
+.sidebar .chapter li > a.active {
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
 .sidebar-iframe-outer {
   display: none !important;
 }
@@ -264,20 +350,21 @@ blockquote {
   gap: 0.55em;
   padding: 0.7em 1em;
   margin: 0 0 0.7em 0;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 6px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: #ffffff !important;
+  border-radius: 8px;
   font-size: 0.98em;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none !important;
-  color: var(--sidebar-fg) !important;
-  transition: background 0.15s, border-color 0.15s;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.12s, box-shadow 0.15s;
+  border: none;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25);
 }
 
 .sidebar-home-link:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
 }
 
 .sidebar-home-link svg {
@@ -286,14 +373,8 @@ blockquote {
   flex-shrink: 0;
 }
 
-.light .sidebar-home-link {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.1);
-}
-
-.light .sidebar-home-link:hover {
-  background: rgba(0, 0, 0, 0.08);
-  border-color: rgba(0, 0, 0, 0.2);
+.navy .sidebar-home-link {
+  box-shadow: 0 2px 8px rgba(251, 146, 60, 0.35);
 }
 
 /* ── Sidebar：阅读进度条 ─────────────────────────── */
@@ -306,59 +387,68 @@ blockquote {
 
 .reading-progress-bar .progress-track {
   height: 6px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(180, 100, 40, 0.18);
   border-radius: 3px;
   margin-top: 0.4em;
   overflow: hidden;
 }
 
+.navy .reading-progress-bar .progress-track {
+  background: rgba(251, 146, 60, 0.2);
+}
+
 .reading-progress-bar .progress-fill {
   height: 100%;
-  background: var(--sidebar-active);
+  background: linear-gradient(90deg, var(--accent-warm), var(--accent));
   border-radius: 3px;
   transition: width 0.4s ease;
 }
 
-.light .reading-progress-bar .progress-track {
-  background: rgba(0, 0, 0, 0.08);
-}
-
-/* ── 侧栏：已读勾 ────────────────────────────────── */
+/* ── Sidebar：已读勾 ─────────────────────────────── */
 .chapter-read-mark {
   display: inline-block;
   margin-left: 0.3em;
-  color: #4ade80;
+  color: var(--accent-leaf);
   font-size: 0.85em;
 }
 
-.light .chapter-read-mark {
-  color: #16a34a;
+/* ── 底部翻页卡片 ────────────────────────────────── */
+.next-chapter-card,
+.prev-chapter-card {
+  text-decoration: none !important;
+  background: var(--bg);
+  border: 1px solid var(--table-border-color);
+  color: var(--fg) !important;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
 }
 
-/* ── 底部下一章 / 上一章卡片 ─────────────────────── */
 .next-chapter-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 3em 0 1em 0;
   padding: 1.2em 1.5em;
-  background: var(--sidebar-bg);
-  border-radius: 8px;
-  text-decoration: none !important;
-  color: var(--fg) !important;
-  border: 1px solid var(--table-border-color);
-  transition: transform 0.15s, box-shadow 0.15s;
+  border-radius: 10px;
 }
 
-.next-chapter-card:hover {
+.next-chapter-card:hover,
+.prev-chapter-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.18);
+}
+
+.navy .next-chapter-card:hover,
+.navy .prev-chapter-card:hover {
+  box-shadow: 0 6px 18px rgba(251, 146, 60, 0.25);
 }
 
 .next-chapter-card .next-label {
   font-size: 0.85em;
-  color: var(--sidebar-non-existant);
+  color: var(--accent-deep);
   margin-bottom: 0.3em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .next-chapter-card .next-title {
@@ -368,7 +458,7 @@ blockquote {
 
 .next-chapter-card .next-arrow {
   font-size: 1.5em;
-  opacity: 0.5;
+  color: var(--accent);
   margin-left: 1em;
 }
 
@@ -377,29 +467,39 @@ blockquote {
   align-items: center;
   margin: 0 0 1em 0;
   padding: 0.85em 1.2em;
-  background: var(--sidebar-bg);
-  border-radius: 8px;
-  text-decoration: none !important;
-  color: var(--fg) !important;
-  border: 1px solid var(--table-border-color);
-  transition: transform 0.15s;
+  border-radius: 10px;
   font-size: 0.94em;
-}
-
-.prev-chapter-card:hover {
-  transform: translateY(-1px);
 }
 
 .prev-chapter-card .prev-arrow {
   margin-right: 0.8em;
-  opacity: 0.5;
+  color: var(--accent);
 }
 
-/* mdBook 自带左右翻页箭头淡化（用底部卡片代替） */
+/* mdBook 自带左右翻页箭头淡化 */
 .nav-chapters {
-  opacity: 0.3;
+  opacity: 0.45;
 }
 
 .nav-chapters:hover {
-  opacity: 0.8;
+  opacity: 0.95;
+  color: var(--accent) !important;
+}
+
+/* ── 选中文本：橙色高亮 ─────────────────────────── */
+::selection {
+  background: rgba(234, 88, 12, 0.25);
+  color: inherit;
+}
+
+.navy ::selection {
+  background: rgba(251, 146, 60, 0.35);
+}
+
+/* ── 强制：阳光奶油为默认基色（覆盖 prefers-color-scheme: dark 在 .js 注入前的回落） */
+html:not(.navy):not(.coal):not(.ayu):not(.rust) {
+  --bg: #fffaf3 !important;
+  --fg: #2c2418 !important;
+  --sidebar-bg: #fef3e1 !important;
+  --sidebar-fg: #5a3a18 !important;
 }
