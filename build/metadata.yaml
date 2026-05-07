@@ -1,8 +1,8 @@
 title: "剖析与实现 MicroClaw"
-subtitle: "基于 v0.1.38 源码的多渠道 Agent Runtime 架构、最小实现与生产实践"
+subtitle: "基于 v0.1.57 源码的多渠道 Agent Runtime 架构、最小实现与生产实践"
 author:
   - "everettjf"
-date: "2026-04-04"
+date: "2026-05-06"
 rights: "Pre-release manuscript"
 toc: true
 toc-title: "目录"
@@ -12,3 +12,6 @@ highlight-style: tango
 mainfont: "Noto Serif CJK SC"
 sansfont: "Noto Sans CJK SC"
 monofont: "Noto Sans Mono CJK SC"
+CJKmainfont: "Noto Serif CJK SC"
+CJKsansfont: "Noto Sans CJK SC"
+CJKmonofont: "Noto Sans Mono CJK SC"
